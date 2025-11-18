@@ -86,3 +86,19 @@ a:hover {
     margin: 0 auto;
     padding: var(--spacing-md) 0;
 }
+.hero {
+    background-image: url('path/to/restaurant-setting-image.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 70vh; /* Viewport Height for a tall banner */
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    padding-left: 5%;
+}
+
+.hero-text {
+    color: var(--color-text-light); /* Light text over the dark/rich image */
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent overlay for text readability */
+    padding: var(--spacing-sm);
+    max-width: 600px;
+}
