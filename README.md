@@ -1,3 +1,163 @@
 # kadermic0.github.io
 <h1>Website used to reserve private dinner parties</h1>
 
+:root {
+    --color-primary: #3A4750;
+    --color-secondary: #E3B448;
+    --color-background: #F8F8F8;
+    --color-text-light: #F8F8F8;
+
+    --font-heading: 'Georgia', serif;
+    --font-body: 'Helvetica Neue', Arial, sans-serif;
+
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-primary);
+    background-color: var(--color-background);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.25rem; }
+
+p { margin-bottom: 1rem; }
+
+/* --- GLOBAL LAYOUT --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0; /* Padding handled by section-padding */
+}
+
+.section-padding {
+    padding: var(--spacing-lg) 0;
+}
+
+.section-light {
+    background-color: var(--color-background);
+}
+
+.section-dark {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.section-dark h2, .section-dark h3, .section-dark h4 {
+    color: var(--color-secondary);
+}
+
+/* --- NAVIGATION & LINKS --- */
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex; /* Flexbox for horizontal navigation */
+    gap: var(--spacing-md);
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-secondary);
+    color: var(--color-text-light) !important;
+    font-weight: bold;
+    border: 2px solid var(--color-secondary);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none !important;
+}
+
+.btn:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    background-image: url('path/to/restaurant-setting-image.jpg'); /* REPLACE THIS PATH */
+    background-size: cover;
+    background-position: center;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+}
+
+.hero-text {
+    color: var(--color-text-light);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: var(--spacing-sm);
+    max-width: 600px;
+}
+
+/* --- ABOUT SECTION --- */
+.tagline {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: var(--spacing-md);
+    color: var(--color-secondary);
+}
+
+/* --- BENEFITS SECTION (Three Columns) --- */
+.three-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: var(--spacing-lg);
+    text-align: center;
+}
+
+.benefit-card {
+    padding: var(--spacing-md);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+}
+
+/* --- CONTACT SECTION --- */
+.contact-info {
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-label {
+    font-weight: bold;
+    margin-bottom: 0;
+    color: var(--color-secondary);
+}
