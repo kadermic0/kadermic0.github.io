@@ -18,6 +18,14 @@
     box-sizing: border-box;
 }
 
+/* --- SCROLL-SNAP SLIDESHOW FEATURE SETUP --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+    overflow: hidden; 
+}
+
 body {
     font-family: var(--font-body);
     color: var(--color-primary);
@@ -43,7 +51,7 @@ p { margin-bottom: 1rem; }
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0; /* Padding handled by section-padding */
+    padding: 0;
 }
 
 .section-padding {
@@ -64,6 +72,15 @@ p { margin-bottom: 1rem; }
 }
 
 /* --- NAVIGATION & LINKS --- */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: var(--color-background); 
+}
+
 a {
     color: var(--color-secondary);
     text-decoration: none;
@@ -83,7 +100,7 @@ header .container {
 
 nav ul {
     list-style: none;
-    display: flex; /* Flexbox for horizontal navigation */
+    display: flex;
     gap: var(--spacing-md);
 }
 
@@ -97,65 +114,4 @@ nav ul {
     border: 2px solid var(--color-secondary);
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    text-decoration: none !important;
-    margin: var(--spacing-sm);
-}
-
-.btn:hover {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-}
-
-/* --- HERO SECTION --- */
-.hero {
-    background-image: url('path/to/restaurant-setting-image.jpg'); /* REPLACE THIS PATH */
-    background-size: cover;
-    background-position: center;
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    padding-left: 5%;
-}
-
-.hero-text {
-    color: var(--color-text-light);
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: var(--spacing-sm);
-    max-width: 600px;
-}
-
-/* --- ABOUT SECTION --- */
-.tagline {
-    font-size: 1.5rem;
-    font-style: italic;
-    font-weight: bold;
-    margin-top: var(--spacing-md);
-    color: var(--color-secondary);
-}
-
-/* --- BENEFITS SECTION (Three Columns) --- */
-.three-columns {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
-    gap: var(--spacing-lg);
-    text-align: center;
-}
-
-.benefit-card {
-    padding: var(--spacing-md);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: white;
-}
-
-/* --- CONTACT SECTION --- */
-.contact-info {
-    margin-bottom: var(--spacing-md);
-}
-
-.contact-label {
-    font-weight: bold;
-    margin-bottom: 0;
-    color: var(--color-secondary);
-}
+    transition: background-color 0.3s, color 0.3s
