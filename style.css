@@ -99,6 +99,7 @@ nav ul {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     text-decoration: none !important;
+    margin: var(--spacing-sm);
 }
 
 .btn:hover {
