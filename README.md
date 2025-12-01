@@ -151,11 +151,9 @@
             <a href="mailto:EatInBloom@gmail.com" class="btn book-now-footer">BOOK NOW</a>
 
             <p>
-      <a href="faq.html"
-          
-           role="button">
-            Go to FAQ Page
-        </a>    
+      <a href="faq.html" class="btn FAQ-Page-footer">Go to FAQ Page</a>
+        
+              
       </p>
         
 
