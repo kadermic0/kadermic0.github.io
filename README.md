@@ -149,10 +149,7 @@
             </div>
 
             <a href="mailto:EatInBloom@gmail.com" class="btn book-now-footer">BOOK NOW</a>
-
-        </div>
-
-        <P>  <a href="faq.html" 
+            <P>  <a href="faq.html" 
            class="inline-block px-8 py-3 text-lg font-semibold text-white bg-indigo-600 
                   rounded-full shadow-lg transition duration-300 ease-in-out 
                   hover:bg-indigo-700 hover:shadow-xl focus:outline-none focus:ring-4 
@@ -162,6 +159,10 @@
             Go to FAQ Page
         </a>
 </P>
+
+        </div>
+
+        
 
     </footer>
 
