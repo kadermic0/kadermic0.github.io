@@ -152,14 +152,7 @@
 
             <p>
       <a href="faq.html"
-           class="inline-block px-8 py-3 text-lg font-bold text-white uppercase
-                  bg-yellow-600 /* Adjusted to a golden yellow */
-                  rounded-lg /* More rounded corners */
-                  shadow-lg /* A subtle shadow */
-                  transition duration-300 ease-in-out
-                  hover:bg-yellow-700 hover:shadow-xl focus:outline-none focus:ring-4
-                  focus:ring-yellow-500 focus:ring-opacity-50 active:bg-yellow-800
-                  transform hover:scale-105"
+          
            role="button">
             Go to FAQ Page
         </a>    
