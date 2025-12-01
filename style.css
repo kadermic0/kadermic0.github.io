@@ -78,7 +78,8 @@ header {
     left: 0;
     width: 100%;
     z-index: 100;
-    background-color: var(--color-background); 
+    background-color: var(--color-background);
+    pointer-events: none;
 }
 
 a {
@@ -102,6 +103,7 @@ nav ul {
     list-style: none;
     display: flex;
     gap: var(--spacing-md);
+    pointer-events: auto;
 }
 
 /* --- BUTTONS --- */
