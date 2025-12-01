@@ -86,8 +86,6 @@
 
            
 
-            <a href="#" class="btn menu-btn">See Sample Menu</a>
-
         </div>
 
     </section>
