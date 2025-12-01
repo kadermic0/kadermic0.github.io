@@ -1,3 +1,12 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eat In Bloom</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    
 <header class="section-padding">
     <div class="container">
         <h1>Eat In Bloom</h1>
@@ -71,3 +80,5 @@
         </div>
     </footer>
 </main>
+</body>
+</html>
