@@ -133,7 +133,7 @@ nav ul {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
-    align-items: center;
+    align-items: right;
     margin-top: var(--spacing-md); 
 }
 
@@ -181,24 +181,22 @@ nav ul {
         text-align: center;
     }
 
-    /* --- THREE COLUMNS / BENEFITS SECTION --- */
+  
     .three-columns {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
     
-    /* --- BUTTONS (Ensure they fill width when stacked) --- */
     .btn {
         width: 90%; /* Make buttons full-width */
         text-align: center;
     }
 
-    /* --- FOOTER BUTTONS (To manage the stacked buttons) --- */
+
     .footer-buttons {
         width: 100%;
     }
 
-    /* --- DISABLE SCROLL-SNAP ON MOBILE --- */
     html, body {
         overflow: auto;
         height: auto;
