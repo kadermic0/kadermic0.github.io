@@ -63,22 +63,27 @@
     </section>
 
     <footer id="contact" class="section-dark section-padding snap-item">
-        <div class="container">
-            <h3>CONTACT</h3>
-            <div class="contact-info">
-                <p class="contact-label">Email:</p>
-                <p><a href="mailto:EatInBloom@gmail.com">EatInBloom@gmail.com</a></p>
-                <p class="note">This is a side project for both of us so please be patient for responses!</p>
-                <br>
-                <p class="contact-label">Location:</p>
-                <p>Anywhere in Monroe County </p>
-            </div>
+    <div class="container">
+        <h3>CONTACT</h3>
+        <div class="contact-info">
+            <p class="contact-label">Email:</p>
+            <p><a href="mailto:EatInBloom@gmail.com">EatInBloom@gmail.com</a></p>
+            <p class="note">This is a side project for both of us so please be patient for responses!</p>
+            <br>
+            <p class="contact-label">Location:</p>
+            <p>Anywhere in Monroe County </p>
+        </div>
+        
+        <div class="footer-buttons">
             <a href="mailto:EatInBloom@gmail.com" class="btn book-now-footer">BOOK NOW</a>
             <p>
                 <a href="faq.html" class="btn">Go to FAQ Page</a>
             </p>
         </div>
-    </footer>
+        </div>
+</footer>
+
+
 </main>
 </body>
 </html>
