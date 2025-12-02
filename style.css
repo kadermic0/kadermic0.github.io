@@ -97,6 +97,15 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    pointer-events: auto; 
+}
+
+.snap-container {
+    height: calc(100vh - 80px); 
+    margin-top: 80px; 
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll; 
+    scroll-behavior: smooth; 
 }
 
 nav ul {
@@ -104,6 +113,12 @@ nav ul {
     display: flex;
     gap: var(--spacing-md);
     pointer-events: auto;
+}
+
+.snap-item {
+    height: 100%; 
+    scroll-snap-align: start; 
+    flex-shrink: 0; 
 }
 
 /* --- BUTTONS --- */
