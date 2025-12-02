@@ -124,6 +124,7 @@ nav ul {
 /* --- BUTTONS --- */
 .btn {
     display: inline-block;
+    margin: var(--spacing-sm);
     padding: 10px 20px;
     background-color: var(--color-secondary);
     color: var(--color-text-light) !important;
