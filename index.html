@@ -6,7 +6,7 @@
     <title>Eat In Bloom</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Define custom scroll behavior needed for full-page snap */
+        /* Define custom scroll behavior needed for full-page snap (Desktop only) */
         html, body {
             overflow: hidden; 
             height: 100%;
@@ -31,7 +31,8 @@
 
         /* Enforce full height for snap items */
         .snap-item {
-            height: 100vh;
+            /* On desktop, height must be 100% of the snap-container */
+            height: 100%; 
             scroll-snap-align: start;
             flex-shrink: 0;
             padding-top: 5rem;
@@ -41,31 +42,45 @@
         .hero-snap {
             padding-top: 0;
         }
-
-        /* Mobile responsiveness: Disable snap on smaller screens */
+        
+        /* --- MOBILE RESPONSIVENESS (<= 768px) --- */
         @media (max-width: 768px) {
+            /* Re-enable default scrolling on body/html */
             html, body {
                 overflow: auto;
                 height: auto;
             }
+            
+            /* Disable snap container behavior */
             .snap-container {
                 height: auto;
                 margin-top: 0;
                 overflow-y: visible;
                 scroll-snap-type: none;
             }
+            
+            /* Allow sections to flow naturally and ensure minimum content height */
             .snap-item {
                 height: auto;
-                min-height: 70vh;
-                padding-top: 2rem;
+                min-height: 80vh; /* Ensures sections still look substantial */
+                padding-top: 4rem; /* Adjusted vertical padding for mobile */
+                padding-bottom: 4rem;
                 scroll-snap-align: none;
             }
+            
+            /* Header scrolls with the page and becomes clickable */
             header {
                 position: static;
                 pointer-events: auto;
-                /* Remove header dynamic styles for mobile */
+                /* Remove fixed header styling that isn't needed on mobile */
                 border-bottom: none;
                 box-shadow: none;
+                height: auto;
+            }
+            
+            /* Hero section specific adjustments for stacking */
+            .hero-snap {
+                min-height: 100vh; /* Make hero take up the full initial screen */
             }
         }
     </style>
@@ -76,8 +91,7 @@
                     colors: {
                         primary: '#3A4750', // Dark Slate
                         secondary: '#E3B448', // Gold/Mustard
-                        background: '#F8F8F8', // Off-White (Used for text color on dark backgrounds)
-                        'text-light': '#F8F8F8' // Retaining old definition just in case, but using 'background' for text
+                        background: '#F8F8F8', // Off-White
                     },
                     fontFamily: {
                         heading: ['Georgia', 'serif'],
@@ -90,7 +104,7 @@
 </head>
 <body class="font-body text-primary bg-background">
 
-<!-- FIXED HEADER -->
+<!-- FIXED HEADER (Static on Mobile) -->
 <header class="fixed top-0 left-0 w-full z-50 bg-background shadow-md border-b border-primary/10 transition-colors duration-300 h-20 flex items-center">
     <div class="container mx-auto px-4 flex justify-between items-center">
         <h1 class="text-3xl font-heading text-primary cursor-default">Eat In Bloom</h1>
@@ -105,7 +119,7 @@
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full">
             
             <!-- Hero Text Column -->
-            <div class="space-y-6 lg:space-y-8 p-4 lg:p-0">
+            <div class="order-2 lg:order-1 space-y-6 lg:space-y-8 p-4 lg:p-0">
                 <h2 class="text-4xl lg:text-5xl font-heading text-primary leading-tight cursor-default">
                     Re-Imagine your Home as a World Class Restaurant
                 </h2>
@@ -122,7 +136,7 @@
             </div>
 
             <!-- Hero Image Column -->
-            <div class="flex justify-center items-center h-full min-h-[300px]">
+            <div class="order-1 lg:order-2 flex justify-center items-center h-full min-h-[300px]">
                 <div class="relative w-full max-w-lg shadow-xl rounded-lg overflow-hidden border-4 border-primary">
                     <img src="https://source.unsplash.com/800x600/?elegant,fine-dining-table" 
                          alt="Elegant restaurant setting with white tablecloth and fine china" 
@@ -138,7 +152,7 @@
     </section>
 
     <!-- TASTING MENUS SECTION (Snap Item 2) -->
-    <section id="tasting-menus" class="snap-item bg-primary text-text-light py-10">
+    <section id="tasting-menus" class="snap-item bg-primary text-background py-10 flex items-center">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-heading text-secondary cursor-default">Tasting Menus at Home</h2>
             <p class="mb-8">Looking for an unforgettable fine dining experience from the comfort of your own home?</p>
@@ -167,7 +181,7 @@
     </section>
     
     <!-- BENEFITS SECTION (Snap Item 3) -->
-    <section class="snap-item bg-background py-10">
+    <section class="snap-item bg-background py-10 flex items-center">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             
             <!-- Benefit Card 1 -->
@@ -216,12 +230,12 @@
             <div class="contact-info space-y-2 mb-8">
                 <p class="font-bold text-secondary">Email:</p>
                 <p><a href="mailto:EatInBloom@gmail.com" class="text-secondary hover:text-secondary underline">EatInBloom@gmail.com</a></p>
-                <!-- FIX: Using text-background for guaranteed off-white color -->
+                <!-- Text visibility fix confirmed -->
                 <p class="text-sm opacity-75 mt-2 text-background">This is a side project for both of us so please be patient for responses!</p>
                 
                 <div class="pt-4">
                     <p class="font-bold text-secondary">Location:</p>
-                    <!-- FIX: Using text-background for guaranteed off-white color -->
+                    <!-- Text visibility fix confirmed -->
                     <p class="text-background">Anywhere in Monroe County</p> 
                 </div>
             </div>
