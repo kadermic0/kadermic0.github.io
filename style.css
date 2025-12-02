@@ -67,6 +67,14 @@ p { margin-bottom: 1rem; }
     color: var(--color-text-light);
 }
 
+.benefit-card {
+    padding: var(--spacing-md);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    text-align: left; 
+}
+
 .section-dark h2, .section-dark h3, .section-dark h4 {
     color: var(--color-secondary);
 }
