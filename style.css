@@ -140,3 +140,78 @@ nav ul {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s
+
+    @media (max-width: 768px) {
+
+   
+    .section-padding {
+        padding: var(--spacing-md) 0; 
+    }
+    
+ 
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+    
+    /* --- HEADER / NAVIGATION --- */
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+    header h1 {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+        padding-left: 0; 
+        justify-content: center;
+    }
+    .hero-text {
+        max-width: 90%; 
+        padding: var(--spacing-md);
+        text-align: center;
+    }
+
+    /* --- THREE COLUMNS / BENEFITS SECTION --- */
+    .three-columns {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    /* --- BUTTONS (Ensure they fill width when stacked) --- */
+    .btn {
+        width: 90%; /* Make buttons full-width */
+        text-align: center;
+    }
+
+    /* --- FOOTER BUTTONS (To manage the stacked buttons) --- */
+    .footer-buttons {
+        width: 100%;
+    }
+
+    /* --- DISABLE SCROLL-SNAP ON MOBILE --- */
+    html, body {
+        overflow: auto;
+        height: auto;
+    }
+
+    .snap-container {
+        margin-top: 0;
+        height: auto; 
+        overflow-y: visible; 
+        scroll-snap-type: none; 
+    }
+    
+    .snap-item {
+        height: auto;
+        min-height: 70vh;
+        scroll-snap-align: none;
+    }
+
+
+    header {
+        position: static; 
+        pointer-events: auto;
+    }
+}
