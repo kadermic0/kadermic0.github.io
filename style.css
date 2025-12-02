@@ -121,10 +121,17 @@ nav ul {
     flex-shrink: 0; 
 }
 
+.footer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
+    margin-top: var(--spacing-md); 
+}
+
 /* --- BUTTONS --- */
 .btn {
     display: inline-block;
-    margin: var(--spacing-sm);
     padding: 10px 20px;
     background-color: var(--color-secondary);
     color: var(--color-text-light) !important;
