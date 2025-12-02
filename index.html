@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eat In Bloom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Define custom scroll behavior needed for full-page snap */
+        html, body {
+            /* Hides the main body scrollbar */
+            overflow: hidden; 
+            height: 100%;
+        }
+        
+        /* The main scroll container */
+        .snap-container {
+            /* Calculated height: 100vh minus the fixed header height (approx 80px) */
+            height: calc(100vh - 80px);
+            margin-top: 80px; 
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+
+        /* Fix the header issue: Allow scrolling to pass through the fixed header */
+        header {
+            pointer-events: none;
+        }
+        header .container {
+            pointer-events: auto;
+        }
+
+        /* Enforce full height for snap items */
+        .snap-item {
+            height: 100vh;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+            padding-top: 5rem; /* Ensure content is below the fixed header (80px + 16px) */
+        }
+        
+        /* Reset padding for the very first item that sits right after the header */
+        .hero-snap {
+            padding-top: 0;
+        }
+
+        /* Mobile responsiveness: Disable snap on smaller screens */
+        @media (max-width: 768px) {
+            html, body {
+                overflow: auto;
+                height: auto;
+            }
+            .snap-container {
+                height: auto;
+                margin-top: 0;
+                overflow-y: visible;
+                scroll-snap-type: none;
+            }
+            .snap-item {
+                height: auto;
+                min-height: 70vh;
+                padding-top: 2rem;
+                scroll-snap-align: none;
+            }
+            header {
+                position: static;
+                pointer-events: auto;
+                /* Remove header dynamic styles for mobile */
+                border-bottom: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3A4750', // Dark Slate
+                        secondary: '#E3B448', // Gold/Mustard
+                        background: '#F8F8F8', // Off-White
+                    },
+                    fontFamily: {
+                        heading: ['Georgia', 'serif'],
+                        body: ['Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body text-primary bg-background">
+
+<!-- FIXED HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background shadow-md border-b border-primary/10 transition-colors duration-300 h-20 flex items-center">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <h1 class="text-3xl font-heading text-primary cursor-default">Eat In Bloom</h1>
+    </div>
+</header>
+
+<!-- MAIN SCROLL CONTAINER -->
+<main class="snap-container">
+
+    <!-- HERO SECTION (Snap Item 1) -->
+    <section class="snap-item hero-snap bg-background p-4 md:p-10 flex items-center justify-center">
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full">
+            
+            <!-- Hero Text Column -->
+            <div class="space-y-6 lg:space-y-8 p-4 lg:p-0">
+                <h2 class="text-4xl lg:text-5xl font-heading text-primary leading-tight cursor-default">
+                    Re-Imagine your Home as a World Class Restaurant
+                </h2>
+                <div class="text-lg space-y-4">
+                    <h3 class="text-xl font-heading text-primary inline-block border-b-2 border-secondary pb-1 cursor-default">
+                        Hello!
+                    </h3>
+                    <p class="font-bold">It's Mike and Raf!</p>
+                    <p>We've been friends and colleagues since 2019 when we met working at Cardinal Spirits. Over the years we have been integral parts of the Bloomington food scene. As founding members of The Elm's culinary team, we worked with Chef Dan Thomas to provide Bloomington with a, much needed, haven for foodies and seekers of flavor. As Chefs we strive towards providing unforgettable experiences for our guests. Now we want to create those memories in YOUR home.</p>
+                    <p class="tagline text-xl italic font-bold text-secondary border-l-4 border-secondary pl-4 pt-1 pb-1">
+                        Your Kitchen, <br> Our Expertise.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Hero Image Column -->
+            <div class="flex justify-center items-center h-full min-h-[300px]">
+                <div class="relative w-full max-w-lg shadow-xl rounded-lg overflow-hidden border-4 border-primary">
+                    <img src="https://placehold.co/700x500/3A4750/E3B448?text=Religant+Restaurant+Setting" 
+                         alt="Elegant restaurant setting with white tablecloth and fine china" 
+                         class="w-full h-auto object-cover"/>
+                    <div class="absolute bottom-0 left-0 right-0 bg-primary/70 text-center p-2">
+                        <p class="text-sm text-background">snyc: elegant restaurant setting</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TASTING MENUS SECTION (Snap Item 2) -->
+    <section id="tasting-menus" class="snap-item bg-primary text-text-light py-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-heading text-secondary cursor-default">Tasting Menus at Home</h2>
+            <p class="mb-8">Looking for an unforgettable fine dining experience from the comfort of your own home?</p>
+
+            <div class="features-grid bg-white/10 p-6 rounded-lg border border-secondary mt-8">
+                <ul class="list-none p-0 flex flex-col gap-4">
+                    <li class="relative pl-6">
+                        <span class="absolute left-0 text-secondary text-xl font-bold">★</span>
+                        Coursed dinners for groups of 6-12 
+                    </li>
+                    <li class="relative pl-6">
+                        <span class="absolute left-0 text-secondary text-xl font-bold">★</span>
+                        Focus on seasonal ingredients 
+                    </li>
+                    <li class="relative pl-6">
+                        <span class="absolute left-0 text-secondary text-xl font-bold">★</span>
+                        Turn your home into a 3 star restaurant 
+                    </li>
+                    <li class="relative pl-6">
+                        <span class="absolute left-0 text-secondary text-xl font-bold">★</span>
+                        Impress your guests. 
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!-- BENEFITS SECTION (Snap Item 3) -->
+    <section class="snap-item bg-background py-10">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+            
+            <!-- Benefit Card 1 -->
+            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3 text-left">
+                <div class="aspect-video overflow-hidden rounded-lg mb-4">
+                    <img src="https://placehold.co/500x300/F8F8F8/3A4750?text=Chef+Plating" 
+                         alt="Chef carefully plating a dish" 
+                         class="w-full h-full object-cover"/>
+                </div>
+                <h4 class="text-xl font-heading text-primary cursor-default">Accommodation.</h4>
+                <p>We observe most dietary restrictions so menus can be flexible. </p>
+            </div>
+            
+            <!-- Benefit Card 2 -->
+            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3 text-left">
+                <div class="aspect-video overflow-hidden rounded-lg mb-4">
+                    <img src="https://placehold.co/500x300/F8F8F8/3A4750?text=Relaxed+Kitchen+View" 
+                         alt="Relaxed homeowner sitting on the counter while chef works" 
+                         class="w-full h-full object-cover"/>
+                </div>
+                <h4 class="text-xl font-heading text-primary cursor-default">Relax.</h4>
+                <p>We handle all the work so you don't have to. </p>
+            </div>
+            
+            <!-- Benefit Card 3 -->
+            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3 text-left">
+                <div class="aspect-video overflow-hidden rounded-lg mb-4">
+                    <img src="https://placehold.co/500x300/F8F8F8/3A4750?text=Dinner+Candlelight" 
+                         alt="Dinner table set beautifully with candles and wine" 
+                         class="w-full h-full object-cover"/>
+                </div>
+                <h4 class="text-xl font-heading text-primary cursor-default">Dine in.</h4>
+                <p>No need to leave the house to eat something extraordinary. </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / FOOTER SECTION (Snap Item 4) -->
+    <footer id="contact" class="snap-item bg-primary text-text-light py-10 flex items-center">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl font-heading text-secondary mb-8 cursor-default">CONTACT</h3>
+            
+            <div class="contact-info space-y-2 mb-8">
+                <p class="font-bold text-secondary">Email:</p>
+                <p><a href="mailto:EatInBloom@gmail.com" class="text-text-light hover:text-secondary underline">EatInBloom@gmail.com</a></p>
+                <p class="text-sm opacity-75 mt-2">This is a side project for both of us so please be patient for responses!</p>
+                
+                <div class="pt-4">
+                    <p class="font-bold text-secondary">Location:</p>
+                    <p>Anywhere in Monroe County</p>
+                </div>
+            </div>
+            
+            <!-- Footer Buttons -->
+            <div class="footer-buttons flex flex-col items-center gap-4 mt-8">
+                <!-- BOOK NOW Button -->
+                <a href="mailto:EatInBloom@gmail.com" class="btn block w-full max-w-xs md:max-w-sm px-6 py-3 text-lg font-bold bg-secondary text-primary rounded-lg transition duration-300 hover:bg-primary hover:text-secondary hover:border-secondary border-2 border-secondary">
+                    BOOK NOW
+                </a>
+                
+                <!-- FAQ Page Button -->
+                <p class="w-full max-w-xs md:max-w-sm m-0">
+                    <a href="faq.html" class="btn block w-full px-6 py-3 text-lg font-bold bg-secondary text-primary rounded-lg transition duration-300 hover:bg-primary hover:text-secondary hover:border-secondary border-2 border-secondary">
+                        Go to FAQ Page
+                    </a>
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+
+</main>
+</body>
+</html>
