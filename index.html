@@ -76,7 +76,8 @@
                     colors: {
                         primary: '#3A4750', // Dark Slate
                         secondary: '#E3B448', // Gold/Mustard
-                        background: '#F8F8F8', // Off-White
+                        background: '#F8F8F8', // Off-White (Used for text color on dark backgrounds)
+                        'text-light': '#F8F8F8' // Retaining old definition just in case, but using 'background' for text
                     },
                     fontFamily: {
                         heading: ['Georgia', 'serif'],
@@ -208,20 +209,20 @@
     </section>
 
     <!-- CONTACT / FOOTER SECTION (Snap Item 4) -->
-    <footer id="contact" class="snap-item bg-primary text-text-light py-10 flex items-center">
+    <footer id="contact" class="snap-item bg-primary text-background py-10 flex items-center">
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl font-heading text-secondary mb-8 cursor-default">CONTACT</h3>
             
             <div class="contact-info space-y-2 mb-8">
                 <p class="font-bold text-secondary">Email:</p>
                 <p><a href="mailto:EatInBloom@gmail.com" class="text-secondary hover:text-secondary underline">EatInBloom@gmail.com</a></p>
-                <!-- FIXED: Explicitly added text-text-light class for visibility -->
-                <p class="text-sm opacity-75 mt-2 text-text-light">This is a side project for both of us so please be patient for responses!</p>
+                <!-- FIX: Using text-background for guaranteed off-white color -->
+                <p class="text-sm opacity-75 mt-2 text-background">This is a side project for both of us so please be patient for responses!</p>
                 
                 <div class="pt-4">
                     <p class="font-bold text-secondary">Location:</p>
-                    <!-- FIXED: Explicitly added text-text-light class for visibility -->
-                    <p class="text-text-light">Anywhere in Monroe County</p> 
+                    <!-- FIX: Using text-background for guaranteed off-white color -->
+                    <p class="text-background">Anywhere in Monroe County</p> 
                 </div>
             </div>
             
