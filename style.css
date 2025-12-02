@@ -79,8 +79,12 @@ header {
     width: 100%;
     z-index: 100;
     background-color: var(--color-background); 
-    /* Scroll Fix: Allows scroll action to pass through header */
-    pointer-events: none; 
+    pointer-events: none; /* Scroll Fix: Allows scroll action to pass through header */
+    
+    /* Dynamic Polish */
+    border-bottom: 1px solid rgba(58, 71, 80, 0.1); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
+    transition: background-color 0.3s ease;
 }
 
 a {
@@ -98,47 +102,13 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Scroll Fix: Re-enables interaction on elements inside header */
-    pointer-events: auto; 
+    pointer-events: auto; /* Scroll Fix: Re-enables interaction on elements inside header */
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: var(--spacing-md);
-}
-
-/* --- TASTING MENUS FEATURE LIST --- */
-
-/* 1. Remove default list styling */
-.features-grid ul {
-    list-style: none; /* Removes the default bullet points */
-    padding: 0;
-    margin: var(--spacing-md) 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* Space between list items */
-}
-
-/* 2. Style the individual list items */
-.features-grid li {
-    position: relative;
-    /* Use the dark background color with the light text color */
-    color: var(--color-text-light); 
-    padding-left: 1.5rem; /* Makes space for the custom "bullet" */
-}
-
-/* 3. Create a custom gold "bullet" using the ::before pseudo-element */
-.features-grid li::before {
-    content: '★'; /* A star symbol, or you could use '✓', '•', etc. */
-    color: var(--color-secondary); /* Your gold color */
-    font-size: 1.25rem;
-    font-weight: bold;
-    
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%); /* Centers the icon vertically */
 }
 
 /* --- BUTTONS --- */
@@ -153,7 +123,6 @@ nav ul {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
     text-decoration: none !important;
-    /* Adjusted margin to work with Flexbox stacking in footer */
     margin: var(--spacing-sm) 0;
 }
 
@@ -164,7 +133,6 @@ nav ul {
 
 /* --- MAIN SCROLL CONTAINER & SNAP ITEMS --- */
 .snap-container {
-    /* Set to 100vh minus the fixed header height (assuming 80px) */
     height: calc(100vh - 80px); 
     margin-top: 80px; 
     
@@ -189,20 +157,82 @@ nav ul {
     padding-left: 5%;
 }
 
+/* Dynamic Hero Text */
 .hero-text {
-    color: var(--color-text-light);
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: var(--spacing-sm);
-    max-width: 600px;
+    padding: var(--spacing-md); 
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px); 
+    background-color: rgba(58, 71, 80, 0.75); 
+}
+
+.hero-text h2 {
+    color: var(--color-text-light); 
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
 }
 
 /* --- ABOUT SECTION --- */
+
+/* Dynamic About Header */
+#about h3 {
+    display: inline-block;
+    border-bottom: 3px solid var(--color-secondary);
+    padding-bottom: 5px;
+}
+
+#about p strong {
+    font-size: 1.1em;
+    color: var(--color-primary);
+}
+
+/* Dynamic Tagline */
 .tagline {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
+    padding: var(--spacing-sm);
+    border-left: 5px solid var(--color-secondary); 
+    margin-left: 0;
+    line-height: 1.4;
     font-style: italic;
     font-weight: bold;
     margin-top: var(--spacing-md);
     color: var(--color-secondary);
+}
+
+/* --- TASTING MENUS FEATURE LIST --- */
+.features-grid {
+    /* Dynamic "Menu Box" styling */
+    background-color: rgba(255, 255, 255, 0.1); 
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    border: 1px solid var(--color-secondary); 
+    margin-top: var(--spacing-lg);
+}
+
+.features-grid ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.features-grid li {
+    position: relative;
+    color: var(--color-text-light); 
+    padding-left: 1.5rem;
+}
+
+.features-grid li::before {
+    content: '★';
+    color: var(--color-secondary);
+    font-size: 1.25rem;
+    font-weight: bold;
+    
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* --- BENEFITS SECTION (Three Columns) --- */
@@ -210,7 +240,7 @@ nav ul {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--spacing-lg);
-    text-align: center;
+    text-align: center; /* Centers the cards within the grid */
 }
 
 .benefit-card {
@@ -218,11 +248,10 @@ nav ul {
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: white;
-    /* NEW: Left-aligns the content inside the card */
-    text-align: left; 
+    text-align: left; /* FIX: Left-aligns the content inside the card */
 }
 
-/* --- CONTACT SECTION --- */
+/* --- CONTACT SECTION & FOOTER --- */
 .contact-info {
     margin-bottom: var(--spacing-md);
 }
@@ -233,7 +262,7 @@ nav ul {
     color: var(--color-secondary);
 }
 
-/* --- FOOTER BUTTON LAYOUT FIX --- */
+/* FOOTER BUTTON LAYOUT FIX */
 .footer-buttons {
     display: flex;
     flex-direction: column;
