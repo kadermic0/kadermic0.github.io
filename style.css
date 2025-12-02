@@ -18,7 +18,7 @@
     box-sizing: border-box;
 }
 
-/* --- SCROLL-SNAP SLIDESHOW FEATURE SETUP --- */
+/* --- GLOBAL SCROLL-SNAP SETUP (Desktop) --- */
 html, body {
     margin: 0;
     padding: 0;
@@ -67,14 +67,6 @@ p { margin-bottom: 1rem; }
     color: var(--color-text-light);
 }
 
-.benefit-card {
-    padding: var(--spacing-md);
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: white;
-    text-align: left; 
-}
-
 .section-dark h2, .section-dark h3, .section-dark h4 {
     color: var(--color-secondary);
 }
@@ -86,8 +78,9 @@ header {
     left: 0;
     width: 100%;
     z-index: 100;
-    background-color: var(--color-background);
-    pointer-events: none;
+    background-color: var(--color-background); 
+    /* Scroll Fix: Allows scroll action to pass through header */
+    pointer-events: none; 
 }
 
 a {
@@ -105,36 +98,14 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* Scroll Fix: Re-enables interaction on elements inside header */
     pointer-events: auto; 
-}
-
-.snap-container {
-    height: calc(100vh - 80px); 
-    margin-top: 80px; 
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll; 
-    scroll-behavior: smooth; 
 }
 
 nav ul {
     list-style: none;
     display: flex;
     gap: var(--spacing-md);
-    pointer-events: auto;
-}
-
-.snap-item {
-    height: 100%; 
-    scroll-snap-align: start; 
-    flex-shrink: 0; 
-}
-
-.footer-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    align-items: right;
-    margin-top: var(--spacing-md); 
 }
 
 /* --- BUTTONS --- */
@@ -147,16 +118,137 @@ nav ul {
     border: 2px solid var(--color-secondary);
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s
+    transition: background-color 0.3s, color 0.3s;
+    text-decoration: none !important;
+    /* Adjusted margin to work with Flexbox stacking in footer */
+    margin: var(--spacing-sm) 0;
+}
 
-    @media (max-width: 768px) {
+.btn:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
 
-   
+/* --- MAIN SCROLL CONTAINER & SNAP ITEMS --- */
+.snap-container {
+    /* Set to 100vh minus the fixed header height (assuming 80px) */
+    height: calc(100vh - 80px); 
+    margin-top: 80px; 
+    
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll; 
+    scroll-behavior: smooth; 
+}
+
+.snap-item {
+    height: 100%; 
+    scroll-snap-align: start; 
+    flex-shrink: 0; 
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    background-image: url('path/to/restaurant-setting-image.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+}
+
+.hero-text {
+    color: var(--color-text-light);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: var(--spacing-sm);
+    max-width: 600px;
+}
+
+/* --- ABOUT SECTION --- */
+.tagline {
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: var(--spacing-md);
+    color: var(--color-secondary);
+}
+
+/* --- BENEFITS SECTION (Three Columns) --- */
+.three-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    text-align: center;
+}
+
+.benefit-card {
+    padding: var(--spacing-md);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    /* NEW: Left-aligns the content inside the card */
+    text-align: left; 
+}
+
+/* --- CONTACT SECTION --- */
+.contact-info {
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-label {
+    font-weight: bold;
+    margin-bottom: 0;
+    color: var(--color-secondary);
+}
+
+/* --- FOOTER BUTTON LAYOUT FIX --- */
+.footer-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
+    margin-top: var(--spacing-md);
+}
+
+footer .footer-buttons p {
+    margin-bottom: 0;
+}
+
+
+/* ################################### */
+/* ### MOBILE RESPONSIVENESS (<= 768px) ### */
+/* ################################### */
+
+@media (max-width: 768px) {
+
+    /* --- DISABLE SCROLL-SNAP ON MOBILE --- */
+    html, body {
+        overflow: auto;
+        height: auto;
+    }
+    
+    .snap-container {
+        margin-top: 0;
+        height: auto; 
+        overflow-y: visible; 
+        scroll-snap-type: none; 
+    }
+    
+    .snap-item {
+        height: auto;
+        min-height: 70vh; 
+        scroll-snap-align: none;
+    }
+    
+    header {
+        position: static;
+        pointer-events: auto;
+    }
+
+    /* --- GLOBAL ADJUSTMENTS --- */
     .section-padding {
         padding: var(--spacing-md) 0; 
     }
     
- 
     h1 { font-size: 2.5rem; }
     h2 { font-size: 1.75rem; }
     h3 { font-size: 1.5rem; }
@@ -181,43 +273,19 @@ nav ul {
         text-align: center;
     }
 
-  
+    /* --- THREE COLUMNS / BENEFITS SECTION --- */
     .three-columns {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
     
+    /* --- BUTTONS & FOOTER --- */
     .btn {
-        width: 90%; /* Make buttons full-width */
+        width: 90%;
         text-align: center;
     }
-
-
+    
     .footer-buttons {
         width: 100%;
-    }
-
-    html, body {
-        overflow: auto;
-        height: auto;
-    }
-
-    .snap-container {
-        margin-top: 0;
-        height: auto; 
-        overflow-y: visible; 
-        scroll-snap-type: none; 
-    }
-    
-    .snap-item {
-        height: auto;
-        min-height: 70vh;
-        scroll-snap-align: none;
-    }
-
-
-    header {
-        position: static; 
-        pointer-events: auto;
     }
 }
