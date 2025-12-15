@@ -47,12 +47,12 @@
             padding-top: 0;
         }
 
-        /* === FIX: Apply height: auto to the final section to prevent blank scroll space === */
-        /* The final section must not be forced to 100% height if content is shorter */
+        /* === FIX: Adjust final section to prevent blank scroll space and restore snap === */
+        /* Set height to auto and align to 'end' so the content bottom aligns with the container bottom. */
         #snap-end {
             height: auto; 
-            min-height: 50vh; /* Ensure it is visually substantial */
-            scroll-snap-align: start; /* Keep snapping for consistency, but the scroll will end at content bottom */
+            min-height: 50vh;
+            scroll-snap-align: end; /* IMPORTANT: Align to end to prevent excess space below content */
         }
         /* ========================================================================= */
 
@@ -372,7 +372,7 @@
     </section>
 
     <!-- CONTACT / FOOTER SECTION (Snap Item 5 / Snap-End) -->
-    <footer id="snap-end" class="bg-primary text-background py-10">
+    <footer id="snap-end" class="snap-item bg-primary text-background py-10">
         <div class="container mx-auto px-4 text-center">
             <!-- Main Title Change -->
             <h3 class="text-3xl font-heading text-secondary mb-8 cursor-default">CONTACT & DETAILS</h3>
