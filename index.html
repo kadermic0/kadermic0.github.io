@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +46,14 @@
         .hero-snap {
             padding-top: 0;
         }
+
+        /* === FIX: Adjust the height of the final section to prevent blank whitespace === */
+        #contact {
+            height: auto; /* Let content determine the height */
+            min-height: 70vh; /* Ensures it looks substantial, but doesn't force 100% */
+        }
+        /* ========================================================================= */
+
 
         /* --- MOBILE RESPONSIVENESS (<= 768px) --- */
         @media (max-width: 768px) {
