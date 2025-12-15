@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eat In Bloom</title>
+    <!-- Add Meta Description for SEO -->
+    <meta name="description" content="Eat In Bloom offers a world-class private dining and tasting menu experience brought directly to your home in Monroe County. Book a private chef today.">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Define custom scroll behavior needed for full-page snap (Desktop only) */
@@ -92,6 +94,7 @@
                         primary: '#3A4750', // Dark Slate
                         secondary: '#E3B448', // Gold/Mustard
                         background: '#F8F8F8', // Off-White
+                        'text-light': '#F8F8F8' 
                     },
                     fontFamily: {
                         heading: ['Georgia', 'serif'],
@@ -107,7 +110,10 @@
 <!-- FIXED HEADER (Static on Mobile) -->
 <header class="fixed top-0 left-0 w-full z-50 bg-background shadow-md border-b border-primary/10 transition-colors duration-300 h-20 flex items-center">
     <div class="container mx-auto px-4 flex justify-between items-center">
-        <h1 class="text-3xl font-heading text-primary cursor-default">Eat In Bloom</h1>
+        <!-- FIX: Header logo links to homepage -->
+        <a href="index.html">
+            <h1 class="text-3xl font-heading text-primary cursor-pointer">Eat In Bloom</h1>
+        </a>
     </div>
 </header>
 
@@ -156,6 +162,47 @@
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-heading text-secondary cursor-default">Tasting Menus at Home</h2>
             <p class="mb-8">Looking for an unforgettable fine dining experience from the comfort of your own home?</p>
+            
+            <!-- NEW ELEMENT: PRICE SCALE TABLE -->
+            <h3 class="text-2xl font-heading text-background mb-4 cursor-default">Pricing Scale (Base Cost)</h3>
+            <div class="overflow-x-auto mb-10">
+                <table class="w-full text-left border-collapse bg-white/10 rounded-lg overflow-hidden">
+                    <caption class="sr-only">Table showing the base pricing tiers for private tasting menus based on guest count.</caption>
+                    <thead class="bg-secondary text-primary">
+                        <tr>
+                            <th scope="col" class="py-3 px-6 text-lg font-bold">Guests</th>
+                            <th scope="col" class="py-3 px-6 text-lg font-bold">Course Count</th>
+                            <th scope="col" class="py-3 px-6 text-lg font-bold">Starting Price (excl. food cost)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-white/20 hover:bg-white/20 transition duration-150">
+                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">6 - 8</th>
+                            <td class="py-4 px-6">5 Courses</td>
+                            <td class="py-4 px-6">$500</td>
+                        </tr>
+                        <tr class="border-b border-white/20 hover:bg-white/20 transition duration-150">
+                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">9 - 10</th>
+                            <td class="py-4 px-6">5 - 6 Courses</td>
+                            <td class="py-4 px-6">$650</td>
+                        </tr>
+                        <tr class="hover:bg-white/20 transition duration-150">
+                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">11 - 12</th>
+                            <td class="py-4 px-6">6 Courses</td>
+                            <td class="py-4 px-6">$800</td>
+                        </tr>
+                    </tbody>
+                    <tfoot class="bg-primary/50 text-secondary text-sm">
+                        <tr>
+                            <td colspan="3" class="py-2 px-6 text-center italic">
+                                *Food cost (ingredients) is additional and varies by menu choice.
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <!-- END NEW ELEMENT: PRICE SCALE TABLE -->
+
 
             <div class="features-grid bg-white/10 p-6 rounded-lg border border-secondary mt-8">
                 <ul class="list-none p-0 flex flex-col gap-4">
