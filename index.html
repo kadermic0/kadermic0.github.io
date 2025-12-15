@@ -275,6 +275,56 @@
     <footer id="contact" class="snap-item bg-primary text-background py-10 flex items-center">
         <div class="container mx-auto px-4 text-center">
             <h3 class="text-3xl font-heading text-secondary mb-8 cursor-default">CONTACT</h3>
+           
+            <!-- NEW ELEMENT: BOOKING INQUIRY FORM -->
+            <div class="flex justify-center mb-8">
+                <form action="mailto:EatInBloom@gmail.com" method="post" enctype="text/plain" class="contact-form w-full max-w-lg space-y-4 text-left">
+                    <!-- SECURITY NOTE: HTML5 validation is for UX only. Server-side validation is required for security. -->
+                    
+                    <div class="space-y-1">
+                        <label for="name" class="font-bold text-background">Your Name*</label>
+                        <input type="text" id="name" name="Name" placeholder="John Doe" 
+                            class="w-full p-3 rounded-md focus:outline-none" 
+                            required 
+                            maxlength="50"
+                            pattern="[A-Za-z\s]{1,50}" 
+                            title="Name must contain only letters and spaces." />
+                    </div>
+
+                    <div class="space-y-1">
+                        <label for="email" class="font-bold text-background">Email Address*</label>
+                        <input type="email" id="email" name="Email" placeholder="your@email.com" 
+                            class="w-full p-3 rounded-md focus:outline-none" 
+                            required />
+                    </div>
+                    
+                    <div class="space-y-1">
+                        <label for="guests" class="font-bold text-background">Approximate Guest Count* (6-12)</label>
+                        <input type="number" id="guests" name="Guests" placeholder="e.g., 8" 
+                            class="w-full p-3 rounded-md focus:outline-none" 
+                            required 
+                            min="6" 
+                            max="12" 
+                            title="Guest count must be between 6 and 12." />
+                    </div>
+
+                    <div class="space-y-1">
+                        <label for="message" class="font-bold text-background">Inquiry Details (Date/Occasion)*</label>
+                        <textarea id="message" name="Message" placeholder="Preferred date, type of event, and dietary needs." 
+                            class="w-full p-3 rounded-md focus:outline-none h-32" 
+                            required 
+                            maxlength="500"></textarea>
+                    </div>
+
+                    <div class="text-center pt-2">
+                        <button type="submit" class="btn w-full px-6 py-3 text-lg font-bold bg-secondary text-primary rounded-lg transition duration-300 hover:bg-primary hover:text-secondary hover:border-secondary border-2 border-secondary">
+                            SUBMIT INQUIRY
+                        </button>
+                    </div>
+                    
+                </form>
+            </div>
+            <!-- END NEW ELEMENT: BOOKING INQUIRY FORM -->
             
             <!-- NEW: Social Icons -->
             <div class="social-icons mb-8 flex justify-center space-x-6">
