@@ -7,7 +7,7 @@
     <!-- Add Meta Description for SEO -->
     <meta name="description" content="Eat In Bloom offers a world-class private dining and tasting menu experience brought directly to your home in Monroe County. Book a private chef today.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- NEW: Font Awesome CDN for social media icons -->
+    <!-- Font Awesome CDN for social media icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         /* Define custom scroll behavior needed for full-page snap (Desktop only) */
@@ -87,6 +87,23 @@
                 min-height: 100vh;
             }
         }
+        
+        /* Form Styling */
+        .contact-form input[type="text"], 
+        .contact-form input[type="email"],
+        .contact-form input[type="number"],
+        .contact-form textarea {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--colors-secondary);
+            color: var(--colors-background);
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+            box-shadow: 0 0 0 2px var(--colors-secondary);
+        }
+
     </style>
     <script>
         tailwind.config = {
@@ -179,19 +196,19 @@
                     </thead>
                     <tbody>
                         <tr class="border-b border-white/20 hover:bg-white/20 transition duration-150">
-                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">2 - 4</th>
+                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">6 - 8</th>
                             <td class="py-4 px-6">5 Courses</td>
-                            <td class="py-4 px-6">$600</td>
+                            <td class="py-4 px-6">$500</td>
                         </tr>
                         <tr class="border-b border-white/20 hover:bg-white/20 transition duration-150">
-                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">5 - 6</th>
-                            <td class="py-4 px-6">5 Courses</td>
-                            <td class="py-4 px-6">$800</td>
+                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">9 - 10</th>
+                            <td class="py-4 px-6">5 - 6 Courses</td>
+                            <td class="py-4 px-6">$650</td>
                         </tr>
                         <tr class="hover:bg-white/20 transition duration-150">
-                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">7 - 8</th>
-                            <td class="py-4 px-6">5 Courses</td>
-                            <td class="py-4 px-6">$1000</td>
+                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">11 - 12</th>
+                            <td class="py-4 px-6">6 Courses</td>
+                            <td class="py-4 px-6">$800</td>
                         </tr>
                     </tbody>
                     <tfoot class="bg-primary/50 text-secondary text-sm">
@@ -274,86 +291,92 @@
     <!-- CONTACT / FOOTER SECTION (Snap Item 4) -->
     <footer id="contact" class="snap-item bg-primary text-background py-10 flex items-center">
         <div class="container mx-auto px-4 text-center">
+            <!-- Main Title Change -->
             <h3 class="text-3xl font-heading text-secondary mb-8 cursor-default">CONTACT</h3>
-           
-            <!-- NEW ELEMENT: BOOKING INQUIRY FORM -->
-            <div class="flex justify-center mb-8">
-                <form action="mailto:EatInBloom@gmail.com" method="post" enctype="text/plain" class="contact-form w-full max-w-lg space-y-4 text-left">
-                    <!-- SECURITY NOTE: HTML5 validation is for UX only. Server-side validation is required for security. -->
-                    
-                    <div class="space-y-1">
-                        <label for="name" class="font-bold text-background">Your Name*</label>
-                        <input type="text" id="name" name="Name" placeholder="John Doe" 
-                            class="w-full p-3 rounded-md focus:outline-none" 
-                            required 
-                            maxlength="50"
-                            pattern="[A-Za-z\s]{1,50}" 
-                            title="Name must contain only letters and spaces." />
-                    </div>
-
-                    <div class="space-y-1">
-                        <label for="email" class="font-bold text-background">Email Address*</label>
-                        <input type="email" id="email" name="Email" placeholder="your@email.com" 
-                            class="w-full p-3 rounded-md focus:outline-none" 
-                            required />
-                    </div>
-                    
-                    <div class="space-y-1">
-                        <label for="guests" class="font-bold text-background">Approximate Guest Count* (6-12)</label>
-                        <input type="number" id="guests" name="Guests" placeholder="e.g., 8" 
-                            class="w-full p-3 rounded-md focus:outline-none" 
-                            required 
-                            min="6" 
-                            max="12" 
-                            title="Guest count must be between 6 and 12." />
-                    </div>
-
-                    <div class="space-y-1">
-                        <label for="message" class="font-bold text-background">Inquiry Details (Date/Occasion)*</label>
-                        <textarea id="message" name="Message" placeholder="Preferred date, type of event, and dietary needs." 
-                            class="w-full p-3 rounded-md focus:outline-none h-32" 
-                            required 
-                            maxlength="500"></textarea>
-                    </div>
-
-                    <div class="text-center pt-2">
-                        <button type="submit" class="btn w-full px-6 py-3 text-lg font-bold bg-secondary text-primary rounded-lg transition duration-300 hover:bg-primary hover:text-secondary hover:border-secondary border-2 border-secondary">
-                            SUBMIT INQUIRY
-                        </button>
-                    </div>
-                    
-                </form>
-            </div>
-            <!-- END NEW ELEMENT: BOOKING INQUIRY FORM -->
             
-            <!-- NEW: Social Icons -->
-            <div class="social-icons mb-8 flex justify-center space-x-6">
-                <!-- Using a placeholder for the social link destination -->
-                <a href="#" aria-label="Follow us on Instagram" class="text-secondary hover:text-background transition-colors duration-200">
-                    <i class="fab fa-instagram text-3xl"></i>
-                </a>
-            
-            </div>
+            <!-- 1. Static Contact Info & Social Icons -->
+            <div class="quick-contact-block border-b border-secondary/50 mb-10 pb-8">
+                <h4 class="text-xl font-heading text-background mb-4 cursor-default">Quick Contact & Socials</h4>
+                
+                <!-- Social Icons -->
+                <div class="social-icons mb-6 flex justify-center space-x-6">
+                    <a href="#" aria-label="Follow us on Instagram" class="text-secondary hover:text-background transition-colors duration-200">
+                        <i class="fab fa-instagram text-3xl"></i>
+                    </a>
+                    <a href="#" aria-label="Follow us on Facebook" class="text-secondary hover:text-background transition-colors duration-200">
+                        <i class="fab fa-facebook-f text-3xl"></i>
+                    </a>
+                </div>
 
-            <div class="contact-info space-y-2 mb-8">
-                <p class="font-bold text-secondary">Email:</p>
-                <p><a href="mailto:EatInBloom@gmail.com" class="text-secondary hover:text-secondary underline">EatInBloom@gmail.com</a></p>
-                
-                <p class="text-sm opacity-75 mt-2 text-background">This is a side project for both of us so please be patient for responses!</p>
-                
-                <div class="pt-4">
-                    <p class="font-bold text-secondary">Location:</p>
-                    <p class="text-background">Anywhere in Monroe County</p> 
+                <div class="contact-info space-y-2">
+                    <p class="font-bold text-secondary">Email:</p>
+                    <p><a href="mailto:EatInBloom@gmail.com" class="text-secondary hover:text-secondary underline">EatInBloom@gmail.com</a></p>
+                    
+                    <p class="text-sm opacity-75 mt-2 text-background">This is a side project for both of us so please be patient for responses!</p>
+
+                    <div class="pt-4 text-center space-y-1">
+                        <p class="font-bold text-secondary">Location:</p>
+                        <p class="text-background">Anywhere in Monroe County</p> 
+                    </div>
                 </div>
             </div>
             
+            <!-- 2. Form "New Box" (Moved and Styled) -->
+            <div class="booking-form-box p-6 md:p-8 bg-white/10 rounded-xl shadow-2xl mb-8">
+                <h4 class="text-3xl font-heading text-secondary mb-6 cursor-default">Book Your Inquiry</h4>
+                
+                <div class="flex justify-center">
+                    <form action="mailto:EatInBloom@gmail.com" method="post" enctype="text/plain" class="contact-form w-full max-w-lg space-y-4 text-left">
+                        <!-- SECURITY NOTE: HTML5 validation is for UX only. Server-side validation is required for security. -->
+                        
+                        <div class="space-y-1">
+                            <label for="name" class="font-bold text-background">Your Name*</label>
+                            <input type="text" id="name" name="Name" placeholder="John Doe" 
+                                class="w-full p-3 rounded-md focus:outline-none" 
+                                required 
+                                maxlength="50"
+                                pattern="[A-Za-z\s]{1,50}" 
+                                title="Name must contain only letters and spaces." />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label for="email" class="font-bold text-background">Email Address*</label>
+                            <input type="email" id="email" name="Email" placeholder="your@email.com" 
+                                class="w-full p-3 rounded-md focus:outline-none" 
+                                required />
+                        </div>
+                        
+                        <div class="space-y-1">
+                            <label for="guests" class="font-bold text-background">Approximate Guest Count* (6-12)</label>
+                            <input type="number" id="guests" name="Guests" placeholder="e.g., 8" 
+                                class="w-full p-3 rounded-md focus:outline-none" 
+                                required 
+                                min="6" 
+                                max="12" 
+                                title="Guest count must be between 6 and 12." />
+                        </div>
+
+                        <div class="space-y-1">
+                            <label for="message" class="font-bold text-background">Inquiry Details (Date/Occasion)*</label>
+                            <textarea id="message" name="Message" placeholder="Preferred date, type of event, and dietary needs." 
+                                class="w-full p-3 rounded-md focus:outline-none h-32" 
+                                required 
+                                maxlength="500"></textarea>
+                        </div>
+
+                        <div class="text-center pt-2">
+                            <button type="submit" class="btn w-full px-6 py-3 text-lg font-bold bg-secondary text-primary rounded-lg transition duration-300 hover:bg-primary hover:text-secondary hover:border-secondary border-2 border-secondary">
+                                SUBMIT INQUIRY
+                            </button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+            <!-- END Form "New Box" -->
+            
             <!-- Footer Buttons -->
             <div class="footer-buttons flex flex-col items-center gap-4 mt-8">
-                <!-- BOOK NOW Button -->
-                <a href="mailto:EatInBloom@gmail.com" class="btn block w-full max-w-xs md:max-w-sm px-6 py-3 text-lg font-bold bg-secondary text-primary rounded-lg transition duration-300 hover:bg-primary hover:text-secondary hover:border-secondary border-2 border-secondary">
-                    BOOK NOW
-                </a>
-                
                 <!-- FAQ Page Button -->
                 <p class="w-full max-w-xs md:max-w-sm m-0">
                     <a href="faq.html" class="btn block w-full px-6 py-3 text-lg font-bold bg-secondary text-primary rounded-lg transition duration-300 hover:bg-primary hover:text-secondary hover:border-secondary border-2 border-secondary">
