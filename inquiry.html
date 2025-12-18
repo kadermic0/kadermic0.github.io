@@ -31,7 +31,7 @@
             const message = document.getElementById('message').value;
 
             if(!name || !email || !message) {
-                document.getElementById('status-msg').innerHTML = `<div class="p-4 bg-red-100 text-red-800 rounded-lg mb-6 text-center">Please fill out all required fields.</div>`;
+                document.getElementById('status-msg').innerHTML = `<div class="p-4 bg-red-100 text-red-800 rounded-lg mb-6 text-center font-bold">Please fill out all required fields.</div>`;
                 return;
             }
 
@@ -45,21 +45,19 @@
 
             const mailtoLink = `mailto:eatinbloom@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             
-            // Create a hidden link and click it - more reliable than window.location
             const tempLink = document.createElement('a');
             tempLink.href = mailtoLink;
             tempLink.click();
 
-            // Show instruction/fallback UI
             const status = document.getElementById('status-msg');
             status.innerHTML = `
                 <div class="p-6 bg-white border-2 border-secondary rounded-xl mb-10 shadow-lg text-center space-y-4">
                     <p class="text-primary font-bold text-lg">Did your email app open?</p>
-                    <p class="text-sm text-gray-600">If not, don't worry! You can copy the info below and paste it into an email to <span class="font-bold">eatinbloom@gmail.com</span></p>
-                    <button onclick="copyToClipboard(\`${body.replace(/`/g, '\\`').replace(/\n/g, '\\n')}\`)" class="bg-primary text-secondary px-6 py-2 rounded font-bold hover:bg-secondary hover:text-primary transition-all">
+                    <p class="text-sm text-gray-600">If not, you can copy the info below and paste it into an email to <span class="font-bold">eatinbloom@gmail.com</span></p>
+                    <button onclick="copyToClipboard(\`${body.replace(/`/g, '\\`').replace(/\n/g, '\\n')}\`)" class="bg-primary text-secondary px-6 py-2 rounded font-bold hover:bg-secondary hover:text-primary transition-all shadow-md">
                         COPY MESSAGE TO CLIPBOARD
                     </button>
-                    <p id="copy-confirm" class="text-xs text-green-600 font-bold hidden">Copied!</p>
+                    <p id="copy-confirm" class="text-xs text-green-600 font-bold hidden italic">Copied to clipboard!</p>
                 </div>
             `;
         }
@@ -78,15 +76,18 @@
         }
     </script>
 </head>
-<body class="font-body text-primary bg-background min-h-screen flex flex-col">
+<body class="font-body text-primary bg-background min-h-screen flex flex-col pt-20">
 
-<header class="w-full bg-background shadow-md border-b border-primary/10 h-20 flex items-center">
+<!-- FIXED HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background shadow-md border-b border-primary/10 h-20 flex items-center">
     <div class="container mx-auto px-4 flex justify-between items-center">
         <a href="index.html">
             <h1 class="text-3xl font-heading text-primary cursor-pointer">Eat In Bloom</h1>
         </a>
-        <nav>
-            <a href="index.html" class="text-primary hover:text-secondary font-bold transition-colors">Home</a>
+        <nav class="hidden md:flex space-x-6 items-center">
+            <a href="menus.html" class="hover:text-secondary transition-colors font-bold">Menus</a>
+            <a href="faq.html" class="hover:text-secondary transition-colors font-bold">FAQ</a>
+            <a href="inquiry.html" class="bg-secondary text-primary px-4 py-2 rounded-lg font-bold hover:bg-primary hover:text-secondary transition-all">Book Now</a>
         </nav>
     </div>
 </header>
@@ -136,11 +137,11 @@
                         class="w-full p-4 rounded-lg bg-white/10 border border-secondary/30 text-white h-40 focus:outline-none focus:border-secondary transition-all placeholder:text-white/40"></textarea>
                 </div>
 
-                <div class="pt-4">
+                <div class="pt-4 text-center">
                     <button type="button" onclick="triggerEmail()" class="w-full py-5 bg-secondary text-primary text-xl font-bold rounded-xl hover:bg-white transition-all shadow-lg transform active:scale-95">
                         OPEN EMAIL TO SEND
                     </button>
-                    <p class="text-center text-xs text-white/50 mt-4 italic">This will prepare an email in your default app.</p>
+                    <p class="text-xs text-white/50 mt-4 italic">This will prepare an email in your default app.</p>
                 </div>
             </div>
         </div>
@@ -149,7 +150,7 @@
 
 <footer class="bg-primary text-background py-10">
     <div class="container mx-auto px-4 text-center">
-        <p class="opacity-70 text-sm">© 2024 Eat In Bloom. Monroe County, IN.</p>
+        <p class="opacity-70 text-sm font-bold">© 2024 Eat In Bloom. Monroe County, IN.</p>
     </div>
 </footer>
 
