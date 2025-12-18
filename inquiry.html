@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inquiry - Eat In Bloom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3A4750',
+                        secondary: '#E3B448',
+                        background: '#F8F8F8',
+                    },
+                    fontFamily: {
+                        heading: ['Georgia', 'serif'],
+                        body: ['Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-body text-primary bg-background min-h-screen flex flex-col">
+
+<!-- HEADER -->
+<header class="w-full bg-background shadow-md border-b border-primary/10 h-20 flex items-center">
+    <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="index.html">
+            <h1 class="text-3xl font-heading text-primary cursor-pointer">Eat In Bloom</h1>
+        </a>
+        <nav class="space-x-6">
+            <a href="index.html" class="text-primary hover:text-secondary font-bold transition-colors">Home</a>
+        </nav>
+    </div>
+</header>
+
+<main class="flex-grow container mx-auto px-4 py-12">
+    <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-10">
+            <h2 class="text-5xl font-heading text-primary mb-4">Book Your Inquiry</h2>
+            <p class="text-xl text-gray-600 italic">Let's start planning your unforgettable dining experience.</p>
+        </div>
+
+        <div class="bg-primary text-background rounded-2xl shadow-2xl p-8 md:p-12">
+            <form action="mailto:EatInBloom@gmail.com" method="post" enctype="text/plain" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="name" class="font-bold text-secondary tracking-wide uppercase text-sm">Your Name*</label>
+                        <input type="text" id="name" name="Name" placeholder="John Doe" 
+                            class="w-full p-4 rounded-lg bg-white/10 border border-secondary/30 text-white focus:outline-none focus:border-secondary focus:bg-white/20 transition-all" 
+                            required maxlength="50" pattern="[A-Za-z\s]{1,50}" />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="email" class="font-bold text-secondary tracking-wide uppercase text-sm">Email Address*</label>
+                        <input type="email" id="email" name="Email" placeholder="your@email.com" 
+                            class="w-full p-4 rounded-lg bg-white/10 border border-secondary/30 text-white focus:outline-none focus:border-secondary focus:bg-white/20 transition-all" 
+                            required />
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label for="guests" class="font-bold text-secondary tracking-wide uppercase text-sm">Guest Count* (2-8)</label>
+                        <input type="number" id="guests" name="Guests" placeholder="e.g., 6" 
+                            class="w-full p-4 rounded-lg bg-white/10 border border-secondary/30 text-white focus:outline-none focus:border-secondary focus:bg-white/20 transition-all" 
+                            required min="2" max="8" />
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="date" class="font-bold text-secondary tracking-wide uppercase text-sm">Preferred Date</label>
+                        <input type="text" id="date" name="Date" placeholder="MM/DD/YYYY or Season" 
+                            class="w-full p-4 rounded-lg bg-white/10 border border-secondary/30 text-white focus:outline-none focus:border-secondary focus:bg-white/20 transition-all" />
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="message" class="font-bold text-secondary tracking-wide uppercase text-sm">Inquiry Details*</label>
+                    <textarea id="message" name="Message" placeholder="Tell us about the occasion, dietary restrictions, or any specific flavor profiles you love." 
+                        class="w-full p-4 rounded-lg bg-white/10 border border-secondary/30 text-white h-40 focus:outline-none focus:border-secondary focus:bg-white/20 transition-all" 
+                        required maxlength="500"></textarea>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" class="w-full py-5 bg-secondary text-primary text-xl font-bold rounded-xl hover:bg-white hover:text-primary border-2 border-secondary transition-all duration-300 shadow-lg">
+                        SUBMIT INQUIRY
+                    </button>
+                    <p class="text-center text-xs opacity-60 mt-4 italic">Submission will open your default email client.</p>
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-12 text-center text-gray-500">
+            <p>We are a small team and appreciate your patience.</p>
+            <p>Typical response time is 48-72 hours.</p>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-primary text-background py-10">
+    <div class="container mx-auto px-4 text-center">
+        <p class="opacity-70 text-sm">© 2024 Eat In Bloom. Monroe County, IN.</p>
+    </div>
+</footer>
+
+</body>
+</html>
