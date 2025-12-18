@@ -10,126 +10,68 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#3A4750', // Dark Slate
-                        secondary: '#E3B448', // Gold/Mustard
-                        background: '#F8F8F8', // Off-White
-                    },
-                    fontFamily: {
-                        heading: ['Georgia', 'serif'],
-                        body: ['Helvetica Neue', 'Arial', 'sans-serif'],
-                    }
+                    colors: { primary: '#3A4750', secondary: '#E3B448', background: '#F8F8F8' },
+                    fontFamily: { heading: ['Georgia', 'serif'], body: ['Helvetica Neue', 'Arial', 'sans-serif'] }
                 }
             }
         }
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
     </script>
-    <style>
-        .hover-lift {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-    </style>
 </head>
 <body class="font-body text-primary bg-background pt-20">
 
-<!-- FIXED HEADER -->
 <header class="fixed top-0 left-0 w-full z-50 bg-background shadow-md border-b border-primary/10 h-20 flex items-center">
-    <div class="container mx-auto px-4 flex justify-between items-center">
-        <a href="index.html">
-            <h1 class="text-3xl font-heading text-primary cursor-pointer hover:text-secondary transition-colors">Eat In Bloom</h1>
-        </a>
+    <div class="container mx-auto px-4 flex justify-between items-center relative">
+        <a href="index.html"><h1 class="text-3xl font-heading text-primary cursor-pointer hover:text-secondary transition-colors">Eat In Bloom</h1></a>
         <nav class="hidden md:flex space-x-6 items-center">
-            <a href="about.html" class="text-secondary transition-colors font-bold">About</a>
+            <a href="about.html" class="text-secondary font-bold">About</a>
             <a href="menus.html" class="hover:text-secondary transition-colors font-bold">Menus</a>
             <a href="faq.html" class="hover:text-secondary transition-colors font-bold">FAQ</a>
-            <a href="inquiry.html" class="bg-secondary text-primary px-4 py-2 rounded-lg font-bold hover:bg-primary hover:text-secondary transition-all shadow-sm">Book Now</a>
+            <a href="inquiry.html" class="bg-secondary text-primary px-4 py-2 rounded-lg font-bold hover:bg-primary transition-all shadow-sm">Book Now</a>
         </nav>
+        <button onclick="toggleMenu()" class="md:hidden text-2xl text-primary p-2 focus:outline-none"><i class="fas fa-bars"></i></button>
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-white border-b border-primary/10 shadow-xl flex flex-col p-6 space-y-4 md:hidden z-50">
+            <a href="about.html" class="text-lg font-bold border-b border-gray-100 pb-2">About</a>
+            <a href="menus.html" class="text-lg font-bold border-b border-gray-100 pb-2">Menus</a>
+            <a href="faq.html" class="text-lg font-bold border-b border-gray-100 pb-2">FAQ</a>
+            <a href="inquiry.html" class="bg-secondary text-primary px-4 py-3 rounded-lg font-bold text-center">Book Now</a>
+        </div>
     </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="py-24 bg-primary text-background">
-    <div class="container mx-auto px-4 text-center">
-        <h2 class="text-5xl md:text-6xl font-heading text-secondary mb-6 italic animate-fade-in">Our Story</h2>
-        <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90 leading-relaxed font-light">
-            Bringing the precision of the professional kitchen into the warmth of the home.
-        </p>
+<section class="py-24 bg-primary text-background text-center">
+    <div class="container mx-auto px-4">
+        <h2 class="text-5xl md:text-6xl font-heading text-secondary italic">Our Story</h2>
+        <p class="text-xl mt-4 opacity-90 font-light">Bringing the precision of the professional kitchen into the warmth of the home.</p>
     </div>
 </section>
 
-<!-- MAIN CONTENT -->
-<main class="container mx-auto px-4 py-20">
-    <div class="max-w-4xl mx-auto space-y-20">
-        
-        <!-- The Partnership -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6 order-2 md:order-1">
-                <h3 class="text-3xl font-heading text-primary">Mike & Raf</h3>
-                <p class="text-lg leading-relaxed text-gray-700">
-                    We've been friends and colleagues since 2019, when we first met working at Cardinal Spirits. Over the years, we have been integral parts of the Bloomington food scene, refining our crafts in some of the city's most respected kitchens.
-                </p>
-                <p class="text-lg leading-relaxed text-gray-700">
-                    As founding members of The Elm's culinary team, we worked alongside Chef Dan Thomas to establish a haven for foodies. We learned that world-class dining isn't just about the food on the plate, it's about the memory of the evening.
-                </p>
-            </div>
-            <div class="order-1 md:order-2">
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-primary hover-lift">
-                    <img src="Epic Handshake.png" alt="Mike and Raf partnership" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/600x800/3A4750/E3B448?text=Mike+%26+Raf';"
-                         class="w-full h-auto object-cover">
-                </div>
-            </div>
+<main class="container mx-auto px-4 py-20 max-w-5xl space-y-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+            <h3 class="text-3xl font-heading">Mike & Raf</h3>
+            <p class="text-lg leading-relaxed text-gray-700">We've been friends and colleagues since 2019, when we first met working at Cardinal Spirits. Over the years, we have been integral parts of the Bloomington food scene, refining our crafts in some of the city's most respected kitchens.</p>
+            <p class="text-lg leading-relaxed text-gray-700">As founding members of The Elm's culinary team, we worked alongside Chef Dan Thomas to establish a haven for foodies. We learned that world-class dining isn't just about the food on the plate, it's about the memory of the evening.</p>
         </div>
-
-        <!-- The Vision -->
-        <div class="bg-white p-10 md:p-16 rounded-3xl shadow-xl border border-gray-100 text-center space-y-8">
-            <h3 class="text-4xl font-heading text-primary">Your Kitchen, Our Expertise.</h3>
-            <blockquote class="text-xl text-gray-600 max-w-2xl mx-auto italic">
-                "We wanted to take everything we loved about the restaurant industry; the technique, the hospitality, the seasonal inspiration, and remove the walls of the restaurant."
-            </blockquote>
-            <div class="w-20 h-1 bg-secondary mx-auto"></div>
-            <p class="text-lg leading-relaxed text-gray-700">
-                Eat In Bloom was born from the desire to create an intimate alternative to the traditional night out. We handle the sourcing, the preparation, the service, and the cleanup, allowing you to be a guest in your own home.
-            </p>
+        <div class="rounded-2xl overflow-hidden shadow-2xl border-4 border-primary">
+            <img src="Epic Handshake.jpg" alt="Partnership" onerror="this.onerror=null; this.src='https://placehold.co/600x800/3A4750/E3B448?text=Mike+%26+Raf';" class="w-full h-auto">
         </div>
+    </div>
 
-        <!-- Our Philosophy -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-secondary hover-lift">
-                <h4 class="text-xl font-heading text-primary mb-4">Seasonality</h4>
-                <p class="text-gray-600">We source locally whenever possible, letting the ingredients of Monroe County dictate our menus.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-secondary hover-lift">
-                <h4 class="text-xl font-heading text-primary mb-4">Intimacy</h4>
-                <p class="text-gray-600">Dining at home allows for a level of comfort and connection that a crowded restaurant can't replicate.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-secondary hover-lift">
-                <h4 class="text-xl font-heading text-primary mb-4">Excellence</h4>
-                <p class="text-gray-600">We bring professional-grade equipment and Michelin-standard techniques to your stovetop.</p>
-            </div>
-        </div>
-
+    <div class="bg-white p-10 md:p-16 rounded-3xl shadow-xl text-center space-y-6">
+        <h3 class="text-4xl font-heading">Your Kitchen, Our Expertise.</h3>
+        <blockquote class="text-xl text-gray-500 italic max-w-2xl mx-auto">"We wanted to take everything we loved about the restaurant industry; the technique, the hospitality, the seasonal inspiration, and remove the walls of the restaurant."</blockquote>
     </div>
 </main>
 
-<!-- CTA SECTION -->
-<footer class="bg-primary text-background py-20">
-    <div class="container mx-auto px-4 text-center">
-        <h3 class="text-3xl font-heading text-secondary mb-8">Ready to host?</h3>
-        <div class="flex justify-center space-x-6 mb-10">
-            <a href="https://www.instagram.com/eatinbloom_/" target="_blank" class="text-secondary hover:text-white transition-all transform hover:scale-110">
-                <i class="fab fa-instagram text-4xl"></i>
-                <span class="sr-only">Instagram</span>
-            </a>
-        </div>
-        <a href="inquiry.html" class="inline-block px-10 py-4 bg-secondary text-primary font-bold rounded-lg border-2 border-secondary hover:bg-transparent hover:text-secondary transition-all shadow-md uppercase tracking-widest">
-            Book an Experience
-        </a>
+<footer class="bg-primary text-background py-16 text-center">
+    <div class="flex justify-center space-x-6 mb-10">
+        <a href="https://www.instagram.com/eatinbloom_/" target="_blank" class="text-secondary hover:text-white transition-colors"><i class="fab fa-instagram text-4xl"></i></a>
     </div>
+    <a href="inquiry.html" class="inline-block px-10 py-4 bg-secondary text-primary font-bold rounded-lg border-2 border-secondary uppercase">Book an Experience</a>
 </footer>
-
 </body>
 </html>
