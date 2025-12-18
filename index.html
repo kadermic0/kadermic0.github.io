@@ -4,19 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eat In Bloom</title>
-    <!-- Add Meta Description for SEO -->
     <meta name="description" content="Eat In Bloom offers a world-class private dining and tasting menu experience brought directly to your home in Monroe County. Book a private chef today.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome CDN for social media icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Define custom scroll behavior needed for full-page snap (Desktop only) */
         html, body {
             overflow: hidden; 
             height: 100%;
         }
         
-        /* The main scroll container */
         .snap-container {
             height: calc(100vh - 80px);
             margin-top: 80px; 
@@ -25,7 +21,6 @@
             scroll-behavior: smooth;
         }
 
-        /* Fix the header issue: Allow scrolling to pass through the fixed header */
         header {
             pointer-events: none;
         }
@@ -33,47 +28,34 @@
             pointer-events: auto;
         }
 
-        /* Enforce full height for snap items */
         .snap-item {
-            /* On desktop, height must be 100% of the snap-container */
             height: 100%; 
             scroll-snap-align: start;
             flex-shrink: 0;
             padding-top: 5rem;
         }
         
-        /* Reset padding for the very first item that sits right after the header */
         .hero-snap {
             padding-top: 0;
         }
 
-        /* === FIX: Adjust final section to prevent blank scroll space and restore snap === */
-        /* Set height to auto and align to 'end' so the content bottom aligns with the container bottom. */
         #snap-end {
             height: auto; 
             min-height: 50vh;
-            scroll-snap-align: end; /* IMPORTANT: Align to end to prevent excess space below content */
+            scroll-snap-align: end; 
         }
-        /* ========================================================================= */
 
-
-        /* --- MOBILE RESPONSIVENESS (<= 768px) --- */
         @media (max-width: 768px) {
-            /* Re-enable default scrolling on body/html */
             html, body {
                 overflow: auto;
                 height: auto;
             }
-            
-            /* Disable snap container behavior */
             .snap-container {
                 height: auto;
                 margin-top: 0;
                 overflow-y: visible;
                 scroll-snap-type: none;
             }
-            
-            /* Allow sections to flow naturally and ensure minimum content height */
             .snap-item {
                 height: auto;
                 min-height: 80vh; 
@@ -81,67 +63,26 @@
                 padding-bottom: 4rem;
                 scroll-snap-align: none;
             }
-            
-            /* Header scrolls with the page and becomes clickable */
             header {
                 position: static;
                 pointer-events: auto;
-                /* Remove fixed header styling that isn't needed on mobile */
                 border-bottom: none;
                 box-shadow: none;
                 height: auto;
             }
-            
-            /* Hero section specific adjustments for stacking */
             .hero-snap {
                 min-height: 100vh;
             }
-            
-            /* Disable special final section rules on mobile */
-            #snap-end {
-                min-height: 50vh;
-            }
         }
-        
-        /* Form Styling */
-        .contact-form input[type="text"], 
-        .contact-form input[type="email"],
-        .contact-form input[type="number"],
-        .contact-form textarea {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--colors-secondary);
-            color: var(--colors-background);
-        }
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            background-color: rgba(255, 255, 255, 0.2);
-            outline: none;
-            box-shadow: 0 0 0 2px var(--colors-secondary);
-        }
-        
-        /* Special styling for the form section (white background) */
-        #booking-form .contact-form input,
-        #booking-form .contact-form textarea {
-            background-color: #f8f8f8; /* White */
-            border: 1px solid #3A4750; /* Primary/Dark */
-            color: #3A4750; /* Primary/Dark */
-        }
-        #booking-form .contact-form input:focus,
-        #booking-form .contact-form textarea:focus {
-            background-color: #ffffff;
-            box-shadow: 0 0 0 2px #E3B448; /* Secondary/Gold */
-        }
-
     </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#3A4750', // Dark Slate
-                        secondary: '#E3B448', // Gold/Mustard
-                        background: '#F8F8F8', // Off-White
-                        'text-light': '#F8F8F8' 
+                        primary: '#3A4750',
+                        secondary: '#E3B448',
+                        background: '#F8F8F8',
                     },
                     fontFamily: {
                         heading: ['Georgia', 'serif'],
@@ -154,267 +95,124 @@
 </head>
 <body class="font-body text-primary bg-background">
 
-<!-- FIXED HEADER (Static on Mobile) -->
-<header class="fixed top-0 left-0 w-full z-50 bg-background shadow-md border-b border-primary/10 transition-colors duration-300 h-20 flex items-center">
+<header class="fixed top-0 left-0 w-full z-50 bg-background shadow-md border-b border-primary/10 h-20 flex items-center">
     <div class="container mx-auto px-4 flex justify-between items-center">
-        <!-- FIX: Header logo links to homepage -->
         <a href="index.html">
             <h1 class="text-3xl font-heading text-primary cursor-pointer">Eat In Bloom</h1>
         </a>
+        <nav class="hidden md:flex space-x-6 items-center">
+            <a href="menus.html" class="hover:text-secondary transition-colors font-bold">Menus</a>
+            <a href="faq.html" class="hover:text-secondary transition-colors font-bold">FAQ</a>
+            <a href="inquiry.html" class="bg-secondary text-primary px-4 py-2 rounded-lg font-bold hover:bg-primary hover:text-secondary transition-all">Book Now</a>
+        </nav>
     </div>
 </header>
 
-<!-- MAIN SCROLL CONTAINER -->
 <main class="snap-container">
 
-    <!-- HERO SECTION (Snap Item 1) -->
+    <!-- HERO SECTION -->
     <section class="snap-item hero-snap bg-background p-4 md:p-10 flex items-center justify-center">
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full">
-            
-            <!-- Hero Text Column -->
             <div class="order-2 lg:order-1 space-y-6 lg:space-y-8 p-4 lg:p-0">
-                <h2 class="text-4xl lg:text-5xl font-heading text-primary leading-tight cursor-default">
+                <h2 class="text-4xl lg:text-5xl font-heading text-primary leading-tight">
                     Re-Imagine your Home as a World Class Restaurant
                 </h2>
                 <div class="text-lg space-y-4">
-                    <h3 class="text-xl font-heading text-primary inline-block border-b-2 border-secondary pb-1 cursor-default">
-                        Hello!
-                    </h3>
                     <p class="font-bold">It's Mike and Raf!</p>
-                    <p>We've been friends and colleagues since 2019 when we met working at Cardinal Spirits. Over the years we have been integral parts of the Bloomington food scene. As founding members of The Elm's culinary team, we worked with Chef Dan Thomas to provide Bloomington with a, much needed, haven for foodies and seekers of flavor. As Chefs we strive towards providing unforgettable experiences for our guests. Now we want to create those memories in YOUR home.</p>
-                    <p class="tagline text-xl italic font-bold text-secondary border-l-4 border-secondary pl-4 pt-1 pb-1">
-                        Your Kitchen, <br> Our Expertise.
-                    </p>
+                    <p>As Chefs we strive towards providing unforgettable experiences for our guests. Now we want to create those memories in YOUR home.</p>
+                    <a href="inquiry.html" class="inline-block px-8 py-3 bg-secondary text-primary font-bold rounded-lg hover:bg-primary hover:text-secondary transition-all border-2 border-secondary mt-4">
+                        Request Your Custom Menu
+                    </a>
                 </div>
             </div>
-
-            <!-- Hero Image Column -->
             <div class="order-1 lg:order-2 flex justify-center items-center h-full min-h-[300px]">
                 <div class="relative w-full max-w-lg shadow-xl rounded-lg overflow-hidden border-4 border-primary">
-                    <img src="https://placehold.co/800x600/3A4750/E3B448?text=Elegant+Dining" 
-                         alt="Elegant restaurant setting with white tablecloth and fine china" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/700x500/3A4750/E3B448?text=Elegant+Setting';"
-                         class="w-full h-auto object-cover"/>
-                    <div class="absolute bottom-0 left-0 right-0 bg-primary/70 text-center p-2">
-                        <p class="text-sm text-background">snyc: elegant restaurant setting</p>
-                    </div>
+                    <img src="https://placehold.co/800x600/3A4750/E3B448?text=Elegant+Dining" alt="Elegant restaurant setting" class="w-full h-auto object-cover"/>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- TASTING MENUS SECTION (Snap Item 2) -->
+    <!-- TASTING MENUS SECTION -->
     <section id="tasting-menus" class="snap-item bg-primary text-background py-10 flex items-center">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-heading text-secondary cursor-default">Tasting Menus at Home</h2>
+            <h2 class="text-4xl font-heading text-secondary mb-4">Tasting Menus at Home</h2>
             <p class="mb-8">Looking for an unforgettable fine dining experience from the comfort of your own home?</p>
             
-            <!-- PRICE SCALE TABLE (UPDATED) -->
-            <h3 class="text-2xl font-heading text-background mb-4 cursor-default">Pricing Scale (Base Cost)</h3>
             <div class="overflow-x-auto mb-10">
                 <table class="w-full text-left border-collapse bg-white/10 rounded-lg overflow-hidden">
-                    <caption class="sr-only">Table showing the base pricing tiers for private tasting menus based on guest count.</caption>
                     <thead class="bg-secondary text-primary">
                         <tr>
                             <th scope="col" class="py-3 px-6 text-lg font-bold">Guests</th>
                             <th scope="col" class="py-3 px-6 text-lg font-bold">Course Count</th>
-                            <th scope="col" class="py-3 px-6 text-lg font-bold">Starting Price (excl. food cost)</th>
+                            <th scope="col" class="py-3 px-6 text-lg font-bold">Starting Price</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- NEW ROWS REFLECTING USER EDITS AND STANDARDIZED COURSE COUNT -->
-                        <tr class="border-b border-white/20 hover:bg-white/20 transition duration-150">
+                        <tr class="border-b border-white/20">
                             <th scope="row" class="py-4 px-6 font-semibold text-secondary">2 - 4</th>
                             <td class="py-4 px-6">5 Courses</td>
                             <td class="py-4 px-6">$600</td>
                         </tr>
-                        <tr class="border-b border-white/20 hover:bg-white/20 transition duration-150">
+                        <tr class="border-b border-white/20">
                             <th scope="row" class="py-4 px-6 font-semibold text-secondary">5 - 6</th>
                             <td class="py-4 px-6">5 Courses</td>
                             <td class="py-4 px-6">$800</td>
                         </tr>
-                        <tr class="hover:bg-white/20 transition duration-150">
+                        <tr>
                             <th scope="row" class="py-4 px-6 font-semibold text-secondary">7 - 8</th>
                             <td class="py-4 px-6">5 Courses</td>
                             <td class="py-4 px-6">$1000</td>
                         </tr>
                     </tbody>
-                    <tfoot class="bg-primary/50 text-secondary text-sm">
-                        <tr>
-                            <td colspan="3" class="py-2 px-6 text-center italic">
-                                *Food cost (ingredients) is additional and varies by menu choice.
-                            </td>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
 
-            <div class="features-grid bg-white/10 p-6 rounded-lg border border-secondary mt-8">
-                <ul class="list-none p-0 flex flex-col gap-4">
-                    <li class="relative pl-6">
-                        <span class="absolute left-0 text-secondary text-xl font-bold">★</span>
-                        Coursed dinners for groups of 2-8 
-                    </li>
-                    <li class="relative pl-6">
-                        <span class="absolute left-0 text-secondary text-xl font-bold">★</span>
-                        Focus on seasonal ingredients 
-                    </li>
-                    <li class="relative pl-6">
-                        <span class="absolute left-0 text-secondary text-xl font-bold">★</span>
-                        Turn your home into a 3 star restaurant 
-                    </li>
-                    <li class="relative pl-6">
-                        <span class="absolute left-0 text-secondary text-xl font-bold">★</span>
-                        Impress your guests. 
-                    </li>
-                </ul>
+            <div class="text-center">
+                <a href="menus.html" class="text-secondary font-bold hover:underline">View Sample Menus →</a>
             </div>
         </div>
     </section>
     
-    <!-- BENEFITS SECTION (Snap Item 3) -->
+    <!-- BENEFITS SECTION -->
     <section class="snap-item bg-background py-10 flex items-center justify-center">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-            
-            <!-- Benefit Card 1 -->
-            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3 text-left">
-                <div class="aspect-video overflow-hidden rounded-lg mb-4">
-                    <img src="https://placehold.co/500x300/3A4750/E3B448?text=Chef+Plating" 
-                         alt="Chef carefully plating a dish in a modern kitchen" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/500x300/F8F8F8/3A4750?text=Chef+Plating';"
-                         class="w-full h-full object-cover"/>
-                </div>
-                <h4 class="text-xl font-heading text-primary cursor-default">Accommodation.</h4>
-                <p>We observe most dietary restrictions so menus can be flexible. </p>
+            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3">
+                <h4 class="text-xl font-heading text-primary">Accommodation.</h4>
+                <p>We observe most dietary restrictions so menus can be flexible.</p>
             </div>
-            
-            <!-- Benefit Card 2 -->
-            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3 text-left">
-                <div class="aspect-video overflow-hidden rounded-lg mb-4">
-                    <img src="https://placehold.co/500x300/3A4750/E3B448?text=Relaxed+Home" 
-                         alt="Relaxed homeowner sitting on the counter while chef works" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/500x300/F8F8F8/3A4750?text=Relaxed+Kitchen+View';"
-                         class="w-full h-full object-cover"/>
-                </div>
-                <h4 class="text-xl font-heading text-primary cursor-default">Relax.</h4>
-                <p>We handle all the work so you don't have to. </p>
+            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3">
+                <h4 class="text-xl font-heading text-primary">Relax.</h4>
+                <p>We handle all the work so you don't have to.</p>
             </div>
-            
-            <!-- Benefit Card 3 -->
-            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3 text-left">
-                <div class="aspect-video overflow-hidden rounded-lg mb-4">
-                    <img src="https://placehold.co/500x300/3A4750/E3B448?text=Candlelight+Dinner" 
-                         alt="Dinner table set beautifully with candles and wine glasses" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/500x300/F8F8F8/3A4750?text=Dinner+Candlelight';"
-                         class="w-full h-full object-cover"/>
-                </div>
-                <h4 class="text-xl font-heading text-primary cursor-default">Dine in.</h4>
-                <p>No need to leave the house to eat something extraordinary. </p>
+            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3">
+                <h4 class="text-xl font-heading text-primary">Dine in.</h4>
+                <p>No need to leave the house to eat something extraordinary.</p>
             </div>
         </div>
     </section>
 
-    <!-- NEW BOOKING FORM SECTION (Snap Item 4) -->
-    <section id="booking-form" class="snap-item bg-background py-10 flex items-center justify-center">
+    <!-- CONTACT / FOOTER SECTION -->
+    <footer id="snap-end" class="snap-item bg-primary text-background py-16">
         <div class="container mx-auto px-4 text-center">
-            
-            <h3 class="text-4xl font-heading text-primary mb-10 cursor-default">Book Your Inquiry</h3>
-            
-            <!-- Form Box -->
-            <div class="booking-form-box p-6 md:p-8 bg-primary text-background rounded-xl shadow-2xl mb-8 flex justify-center">
-                <form action="mailto:EatInBloom@gmail.com" method="post" enctype="text/plain" class="contact-form w-full max-w-lg space-y-4 text-left">
-                    <!-- SECURITY NOTE: HTML5 validation is for UX only. Server-side validation is required for security. -->
-                    
-                    <div class="space-y-1">
-                        <label for="name" class="font-bold text-secondary">Your Name*</label>
-                        <input type="text" id="name" name="Name" placeholder="John Doe" 
-                            class="w-full p-3 rounded-md focus:outline-none" 
-                            required 
-                            maxlength="50"
-                            pattern="[A-Za-z\s]{1,50}" 
-                            title="Name must contain only letters and spaces." />
-                    </div>
-
-                    <div class="space-y-1">
-                        <label for="email" class="font-bold text-secondary">Email Address*</label>
-                        <input type="email" id="email" name="Email" placeholder="your@email.com" 
-                            class="w-full p-3 rounded-md focus:outline-none" 
-                            required />
-                    </div>
-                    
-                    <div class="space-y-1">
-                        <label for="guests" class="font-bold text-secondary">Approximate Guest Count* (2-8)</label>
-                        <input type="number" id="guests" name="Guests" placeholder="e.g., 6" 
-                            class="w-full p-3 rounded-md focus:outline-none" 
-                            required 
-                            min="2" 
-                            max="8" 
-                            title="Guest count must be between 2 and 8." />
-                    </div>
-
-                    <div class="space-y-1">
-                        <label for="message" class="font-bold text-secondary">Inquiry Details (Date/Occasion)*</label>
-                        <textarea id="message" name="Message" placeholder="Preferred date, type of event, and dietary needs." 
-                            class="w-full p-3 rounded-md focus:outline-none h-32" 
-                            required 
-                            maxlength="500"></textarea>
-                    </div>
-
-                    <div class="text-center pt-2">
-                        <button type="submit" class="btn w-full px-6 py-3 text-lg font-bold bg-secondary text-primary rounded-lg transition duration-300 hover:bg-primary hover:text-secondary hover:border-secondary border-2 border-secondary">
-                            SUBMIT INQUIRY
-                        </button>
-                    </div>
-                    
-                </form>
+            <h3 class="text-3xl font-heading text-secondary mb-8">CONTACT & DETAILS</h3>
+            <div class="flex justify-center space-x-6 mb-10">
+                <a href="#" class="text-secondary hover:text-background transition-colors"><i class="fab fa-instagram text-4xl"></i></a>
             </div>
-        </div>
-    </section>
-
-    <!-- CONTACT / FOOTER SECTION (Snap Item 5 / Snap-End) -->
-    <footer id="snap-end" class="snap-item bg-primary text-background py-10">
-        <div class="container mx-auto px-4 text-center">
-            <!-- Main Title Change -->
-            <h3 class="text-3xl font-heading text-secondary mb-8 cursor-default">CONTACT & DETAILS</h3>
-            
-            <!-- 1. Static Contact Info & Social Icons -->
-            <div class="quick-contact-block border-b border-secondary/50 mb-10 pb-8">
-                <h4 class="text-xl font-heading text-background mb-4 cursor-default">Quick Contact & Socials</h4>
-                
-                <!-- Social Icons (Removed Facebook Icon) -->
-                <div class="social-icons mb-6 flex justify-center space-x-6">
-                    <a href="#" aria-label="Follow us on Instagram" class="text-secondary hover:text-background transition-colors duration-200">
-                        <i class="fab fa-instagram text-3xl"></i>
-                    </a>
-                </div>
-
-                <div class="contact-info space-y-2">
-                    <p class="font-bold text-secondary">Email:</p>
-                    <p><a href="mailto:EatInBloom@gmail.com" class="text-secondary hover:text-secondary underline">EatInBloom@gmail.com</a></p>
-                    
-                    <p class="text-sm opacity-75 mt-2 text-background">This is a side project for both of us so please be patient for responses!</p>
-
-                    <div class="pt-4 text-center space-y-1">
-                        <p class="font-bold text-secondary">Location:</p>
-                        <p class="text-background">Anywhere in Monroe County</p> 
-                    </div>
-                </div>
+            <div class="space-y-4 mb-12">
+                <p class="text-xl font-heading">EatInBloom@gmail.com</p>
+                <p class="opacity-75">Serving anywhere in Monroe County, IN</p>
             </div>
-            
-            <!-- Footer Buttons -->
-            <div class="footer-buttons flex flex-col items-center gap-4 mt-8">
-                <!-- FAQ Page Button -->
-                <p class="w-full max-w-xs md:max-w-sm m-0">
-                    <a href="faq.html" class="btn block w-full px-6 py-3 text-lg font-bold bg-secondary text-primary rounded-lg transition duration-300 hover:bg-background hover:text-secondary hover:border-secondary border-2 border-secondary">
-                        Go to FAQ Page
-                    </a>
-                </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="inquiry.html" class="px-10 py-4 bg-secondary text-primary font-bold rounded-lg border-2 border-secondary hover:bg-primary hover:text-secondary transition-all">
+                    START AN INQUIRY
+                </a>
+                <a href="faq.html" class="px-10 py-4 border-2 border-secondary text-secondary font-bold rounded-lg hover:bg-secondary hover:text-primary transition-all">
+                    GO TO FAQ PAGE
+                </a>
             </div>
-
         </div>
     </footer>
-
 
 </main>
 </body>
