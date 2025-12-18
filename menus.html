@@ -24,15 +24,17 @@
         }
     </script>
 </head>
-<body class="font-body text-primary bg-background">
+<body class="font-body text-primary bg-background pt-20">
 
-<header class="bg-background shadow-md border-b border-primary/10 h-20 flex items-center">
+<!-- FIXED HEADER -->
+<header class="fixed top-0 left-0 w-full z-50 bg-background shadow-md border-b border-primary/10 h-20 flex items-center">
     <div class="container mx-auto px-4 flex justify-between items-center">
         <a href="index.html">
             <h1 class="text-3xl font-heading text-primary cursor-pointer">Eat In Bloom</h1>
         </a>
-        <nav class="space-x-8 flex items-center">
-            <a href="index.html" class="hover:text-secondary transition-colors font-bold">Home</a>
+        <nav class="hidden md:flex space-x-6 items-center">
+            <a href="menus.html" class="text-secondary transition-colors font-bold">Menus</a>
+            <a href="faq.html" class="hover:text-secondary transition-colors font-bold">FAQ</a>
             <a href="inquiry.html" class="bg-secondary text-primary px-4 py-2 rounded-lg font-bold hover:bg-primary hover:text-secondary transition-all">Book Now</a>
         </nav>
     </div>
@@ -41,7 +43,7 @@
 <section class="py-20 bg-primary text-background text-center">
     <div class="container mx-auto px-4">
         <h2 class="text-5xl font-heading text-secondary mb-4">Culinary Inspiration</h2>
-        <p class="text-xl max-w-2xl mx-auto opacity-90">Every menu is unique to the season and your preferences. Here is a glimpse into our culinary storytelling.</p>
+        <p class="text-xl max-w-2xl mx-auto opacity-90">Every menu is unique to the season and your preferences.</p>
     </div>
 </section>
 
@@ -128,7 +130,7 @@
 <footer class="bg-primary text-background py-16">
     <div class="container mx-auto px-4 text-center">
         <h3 class="text-3xl font-heading text-secondary mb-6">Ready for your own custom menu?</h3>
-        <a href="inquiry.html" class="inline-block px-10 py-4 bg-secondary text-primary font-bold rounded-lg border-2 border-secondary hover:bg-transparent hover:text-secondary transition-all">
+        <a href="inquiry.html" class="inline-block px-10 py-4 bg-secondary text-primary font-bold rounded-lg border-2 border-secondary hover:bg-transparent hover:text-secondary transition-all shadow-md">
             Start Your Inquiry
         </a>
     </div>
