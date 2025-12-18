@@ -8,11 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        html, body {
-            overflow: hidden; 
-            height: 100%;
-        }
-        
+        /* Desktop Scroll Snapping */
+        html, body { overflow: hidden; height: 100%; }
         .snap-container {
             height: calc(100vh - 80px);
             margin-top: 80px; 
@@ -20,84 +17,38 @@
             overflow-y: scroll;
             scroll-behavior: smooth;
         }
-
-        header {
-            pointer-events: none;
-        }
-        header .container {
-            pointer-events: auto;
-        }
-
-        .snap-item {
-            height: 100%; 
-            scroll-snap-align: start;
-            flex-shrink: 0;
-            padding-top: 5rem;
-        }
-        
-        .hero-snap {
-            padding-top: 0;
-        }
-
-        #snap-end {
-            height: auto; 
-            min-height: 50vh;
-            scroll-snap-align: end; 
-        }
+        header { pointer-events: auto; }
+        .snap-item { height: 100%; scroll-snap-align: start; flex-shrink: 0; padding-top: 5rem; }
+        .hero-snap { padding-top: 0; }
+        #snap-end { height: auto; min-height: 50vh; scroll-snap-align: end; }
 
         @media (max-width: 768px) {
-            html, body {
-                overflow: auto;
-                height: auto;
-            }
-            .snap-container {
-                height: auto;
-                margin-top: 0;
-                overflow-y: visible;
-                scroll-snap-type: none;
-            }
-            .snap-item {
-                height: auto;
-                min-height: 80vh; 
-                padding-top: 4rem; 
-                padding-bottom: 4rem;
-                scroll-snap-align: none;
-            }
-            header {
-                position: static;
-                pointer-events: auto;
-                border-bottom: none;
-                box-shadow: none;
-                height: auto;
-            }
-            .hero-snap {
-                min-height: 100vh;
-            }
+            html, body { overflow: auto; height: auto; }
+            .snap-container { height: auto; margin-top: 0; overflow-y: visible; scroll-snap-type: none; }
+            .snap-item { height: auto; min-height: 80vh; padding-top: 5rem; padding-bottom: 4rem; scroll-snap-align: none; }
+            header { position: fixed; background: #F8F8F8; }
+            .hero-snap { min-height: 100vh; padding-top: 80px; }
         }
     </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        primary: '#3A4750',
-                        secondary: '#E3B448',
-                        background: '#F8F8F8',
-                    },
-                    fontFamily: {
-                        heading: ['Georgia', 'serif'],
-                        body: ['Helvetica Neue', 'Arial', 'sans-serif'],
-                    }
+                    colors: { primary: '#3A4750', secondary: '#E3B448', background: '#F8F8F8' },
+                    fontFamily: { heading: ['Georgia', 'serif'], body: ['Helvetica Neue', 'Arial', 'sans-serif'] }
                 }
             }
+        }
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
         }
     </script>
 </head>
 <body class="font-body text-primary bg-background">
 
-<!-- FIXED HEADER -->
 <header class="fixed top-0 left-0 w-full z-50 bg-background shadow-md border-b border-primary/10 h-20 flex items-center">
-    <div class="container mx-auto px-4 flex justify-between items-center">
+    <div class="container mx-auto px-4 flex justify-between items-center relative">
         <a href="index.html">
             <h1 class="text-3xl font-heading text-primary cursor-pointer hover:text-secondary transition-colors">Eat In Bloom</h1>
         </a>
@@ -107,119 +58,84 @@
             <a href="faq.html" class="hover:text-secondary transition-colors font-bold">FAQ</a>
             <a href="inquiry.html" class="bg-secondary text-primary px-4 py-2 rounded-lg font-bold hover:bg-primary hover:text-secondary transition-all shadow-sm">Book Now</a>
         </nav>
+        <button onclick="toggleMenu()" class="md:hidden text-2xl text-primary p-2 focus:outline-none"><i class="fas fa-bars"></i></button>
+        <div id="mobile-menu" class="hidden absolute top-20 left-0 w-full bg-white border-b border-primary/10 shadow-xl flex flex-col p-6 space-y-4 md:hidden z-50">
+            <a href="about.html" class="text-lg font-bold border-b border-gray-100 pb-2">About</a>
+            <a href="menus.html" class="text-lg font-bold border-b border-gray-100 pb-2">Menus</a>
+            <a href="faq.html" class="text-lg font-bold border-b border-gray-100 pb-2">FAQ</a>
+            <a href="inquiry.html" class="bg-secondary text-primary px-4 py-3 rounded-lg font-bold text-center">Book Now</a>
+        </div>
     </div>
 </header>
 
 <main class="snap-container">
-
-    <!-- HERO SECTION -->
     <section class="snap-item hero-snap bg-background p-4 md:p-10 flex items-center justify-center">
         <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-center h-full">
-            <div class="order-2 lg:order-1 space-y-6 lg:space-y-8 p-4 lg:p-0 text-center lg:text-left">
-                <h2 class="text-4xl lg:text-5xl font-heading text-primary leading-tight">
-                    Re-Imagine your Home as a World Class Restaurant
-                </h2>
+            <div class="order-2 lg:order-1 space-y-6 text-center lg:text-left">
+                <h2 class="text-4xl lg:text-5xl font-heading text-primary leading-tight italic">Re-Imagine your Home as a World Class Restaurant</h2>
                 <div class="text-lg space-y-4">
                     <p class="font-bold">It's Mike and Raf!</p>
                     <p>As Chefs we strive towards providing unforgettable experiences for our guests. Now we want to create those memories in YOUR home.</p>
-                    <a href="inquiry.html" class="inline-block px-8 py-3 bg-secondary text-primary font-bold rounded-lg hover:bg-primary hover:text-secondary transition-all border-2 border-secondary mt-4 shadow-md">
-                        Request Your Custom Menu
-                    </a>
+                    <a href="inquiry.html" class="inline-block px-8 py-3 bg-secondary text-primary font-bold rounded-lg hover:bg-primary hover:text-secondary transition-all border-2 border-secondary mt-4 shadow-md uppercase tracking-widest text-sm">Request Your Custom Menu</a>
                 </div>
             </div>
-            <div class="order-1 lg:order-2 flex justify-center items-center h-full min-h-[300px]">
+            <div class="order-1 lg:order-2 flex justify-center items-center">
                 <div class="relative w-full max-w-lg shadow-xl rounded-lg overflow-hidden border-4 border-primary">
-                    <img src="Homepage photo.jpg" alt="Elegant restaurant setting" 
-                         onerror="this.onerror=null; this.src='https://placehold.co/800x600/3A4750/E3B448?text=Elegant+Dining';"
-                         class="w-full h-auto object-cover"/>
+                    <img src="Homepage photo.jpg" alt="Elegant Dining" onerror="this.onerror=null; this.src='https://placehold.co/800x600/3A4750/E3B448?text=Elegant+Dining';" class="w-full h-auto object-cover"/>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- TASTING MENUS SECTION -->
     <section id="tasting-menus" class="snap-item bg-primary text-background py-10 flex items-center">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-heading text-secondary mb-4">Tasting Menus at Home</h2>
-            <p class="mb-8">Looking for an unforgettable fine dining experience from the comfort of your own home?</p>
-            
+            <h2 class="text-4xl font-heading text-secondary mb-4 italic">Tasting Menus at Home</h2>
             <div class="overflow-x-auto mb-10">
                 <table class="w-full text-left border-collapse bg-white/10 rounded-lg overflow-hidden">
                     <thead class="bg-secondary text-primary">
-                        <tr>
-                            <th scope="col" class="py-3 px-6 text-lg font-bold">Guests</th>
-                            <th scope="col" class="py-3 px-6 text-lg font-bold">Course Count</th>
-                            <th scope="col" class="py-3 px-6 text-lg font-bold">Starting Price</th>
-                        </tr>
+                        <tr><th class="py-3 px-6">Guests</th><th class="py-3 px-6">Course Count</th><th class="py-3 px-6">Starting Price</th></tr>
                     </thead>
-                    <tbody>
-                        <tr class="border-b border-white/20">
-                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">2 - 4</th>
-                            <td class="py-4 px-6">5 Courses</td>
-                            <td class="py-4 px-6">$600</td>
-                        </tr>
-                        <tr class="border-b border-white/20">
-                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">5 - 6</th>
-                            <td class="py-4 px-6">5 Courses</td>
-                            <td class="py-4 px-6">$800</td>
-                        </tr>
-                        <tr>
-                            <th scope="row" class="py-4 px-6 font-semibold text-secondary">7 - 8</th>
-                            <td class="py-4 px-6">5 Courses</td>
-                            <td class="py-4 px-6">$1000</td>
-                        </tr>
+                    <tbody class="text-lg">
+                        <tr class="border-b border-white/10"><th class="py-4 px-6 font-semibold text-secondary">2 - 4</th><td>5 Courses</td><td>$600</td></tr>
+                        <tr class="border-b border-white/10"><th class="py-4 px-6 font-semibold text-secondary">5 - 6</th><td>5 Courses</td><td>$800</td></tr>
+                        <tr><th class="py-4 px-6 font-semibold text-secondary">7 - 8</th><td>5 Courses</td><td>$1000</td></tr>
                     </tbody>
                 </table>
             </div>
-
-            <div class="text-center">
-                <a href="menus.html" class="text-secondary font-bold hover:underline">View Sample Menus →</a>
-            </div>
+            <div class="text-center"><a href="menus.html" class="text-secondary font-bold hover:underline text-xl">View Sample Menus →</a></div>
         </div>
     </section>
-    
-    <!-- BENEFITS SECTION -->
-    <section class="snap-item bg-background py-10 flex items-center justify-center">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3">
-                <h4 class="text-xl font-heading text-primary">Accommodation.</h4>
+
+    <section class="snap-item bg-background flex items-center justify-center">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-8 bg-white border border-gray-100 rounded-2xl shadow-lg space-y-4">
+                <h4 class="text-2xl font-heading text-primary border-b-2 border-secondary pb-2">Accommodation</h4>
                 <p>We observe most dietary restrictions so menus can be flexible.</p>
             </div>
-            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3">
-                <h4 class="text-xl font-heading text-primary">Relax.</h4>
+            <div class="p-8 bg-white border border-gray-100 rounded-2xl shadow-lg space-y-4">
+                <h4 class="text-2xl font-heading text-primary border-b-2 border-secondary pb-2">Relax</h4>
                 <p>We handle all the work so you don't have to.</p>
             </div>
-            <div class="benefit-card p-6 border border-gray-200 rounded-xl bg-white shadow-lg space-y-3">
-                <h4 class="text-xl font-heading text-primary">Dine in.</h4>
+            <div class="p-8 bg-white border border-gray-100 rounded-2xl shadow-lg space-y-4">
+                <h4 class="text-2xl font-heading text-primary border-b-2 border-secondary pb-2">Dine In</h4>
                 <p>No need to leave the house to eat something extraordinary.</p>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER SECTION -->
-    <footer id="snap-end" class="snap-item bg-primary text-background py-16">
+    <footer id="snap-end" class="bg-primary text-background py-16">
         <div class="container mx-auto px-4 text-center">
-            <h3 class="text-3xl font-heading text-secondary mb-8">CONTACT & DETAILS</h3>
+            <h3 class="text-3xl font-heading text-secondary mb-8 uppercase tracking-widest italic">Contact & Details</h3>
             <div class="flex justify-center space-x-6 mb-10">
-                <a href="https://www.instagram.com/eatinbloom_/" target="_blank" class="text-secondary hover:text-white transition-colors">
-                    <i class="fab fa-instagram text-4xl"></i>
-                </a>
+                <a href="https://www.instagram.com/eatinbloom_/" target="_blank" class="text-secondary hover:text-background transition-colors"><i class="fab fa-instagram text-4xl"></i></a>
             </div>
-            <div class="space-y-4 mb-12">
-                <p class="text-xl font-heading font-bold">eatinbloom@gmail.com</p>
-                <p class="opacity-75">Serving anywhere in Monroe County, IN</p>
-            </div>
-            <div class="flex flex-col md:flex-row justify-center gap-4">
-                <a href="inquiry.html" class="px-10 py-4 bg-secondary text-primary font-bold rounded-lg border-2 border-secondary hover:bg-primary hover:text-secondary transition-all shadow-md">
-                    START AN INQUIRY
-                </a>
-                <a href="faq.html" class="px-10 py-4 border-2 border-secondary text-secondary font-bold rounded-lg hover:bg-secondary hover:text-primary transition-all">
-                    GO TO FAQ PAGE
-                </a>
+            <p class="text-2xl font-heading font-bold mb-10">eatinbloom@gmail.com</p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="inquiry.html" class="px-10 py-4 bg-secondary text-primary font-bold rounded-lg border-2 border-secondary hover:bg-primary hover:text-secondary transition-all shadow-md uppercase">Start Inquiry</a>
+                <a href="faq.html" class="px-10 py-4 border-2 border-secondary text-secondary font-bold rounded-lg hover:bg-secondary hover:text-primary transition-all uppercase">FAQ Page</a>
             </div>
         </div>
     </footer>
-
 </main>
 </body>
 </html>
