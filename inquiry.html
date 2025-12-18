@@ -6,6 +6,66 @@
     <title>Inquiry - Eat In Bloom</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Use environment-provided configuration
+        const firebaseConfig = JSON.parse(__firebase_config);
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'eat-in-bloom-site';
+
+        // Track user state
+        let currentUser = null;
+        onAuthStateChanged(auth, (user) => {
+            currentUser = user;
+        });
+
+        window.submitInquiry = async (event) => {
+            event.preventDefault();
+            const btn = document.getElementById('submit-btn');
+            const status = document.getElementById('status-msg');
+            
+            btn.disabled = true;
+            btn.innerText = "SENDING...";
+
+            try {
+                // Ensure auth before writing
+                if (!currentUser) {
+                    if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                        await signInWithCustomToken(auth, __initial_auth_token);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                }
+                
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    guests: parseInt(document.getElementById('guests').value),
+                    date: document.getElementById('date').value,
+                    message: document.getElementById('message').value,
+                    createdAt: serverTimestamp(),
+                    status: 'new'
+                };
+
+                // Path: /artifacts/{appId}/public/data/inquiries
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'inquiries'), formData);
+
+                status.innerHTML = `<div class="p-4 bg-green-100 text-green-800 rounded-lg mb-6">Thank you! Your inquiry has been received. We will be in touch shortly.</div>`;
+                document.getElementById('inquiry-form').reset();
+            } catch (error) {
+                console.error("Error submitting form: ", error);
+                status.innerHTML = `<div class="p-4 bg-red-100 text-red-800 rounded-lg mb-6">Sorry, something went wrong. Please try again or email us directly at EatInBloom@gmail.com.</div>`;
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "SUBMIT INQUIRY";
+            }
+        };
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -45,14 +105,16 @@
             <p class="text-xl text-gray-600 italic">Let's start planning your unforgettable dining experience.</p>
         </div>
 
+        <div id="status-msg"></div>
+
         <div class="bg-primary text-background rounded-2xl shadow-2xl p-8 md:p-12">
-            <form action="mailto:EatInBloom@gmail.com" method="post" enctype="text/plain" class="space-y-6">
+            <form id="inquiry-form" onsubmit="submitInquiry(event)" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
                         <label for="name" class="font-bold text-secondary tracking-wide uppercase text-sm">Your Name*</label>
                         <input type="text" id="name" name="Name" placeholder="John Doe" 
                             class="w-full p-4 rounded-lg bg-white/10 border border-secondary/30 text-white focus:outline-none focus:border-secondary focus:bg-white/20 transition-all" 
-                            required maxlength="50" pattern="[A-Za-z\s]{1,50}" />
+                            required maxlength="50" />
                     </div>
 
                     <div class="space-y-2">
@@ -80,23 +142,17 @@
 
                 <div class="space-y-2">
                     <label for="message" class="font-bold text-secondary tracking-wide uppercase text-sm">Inquiry Details*</label>
-                    <textarea id="message" name="Message" placeholder="Tell us about the occasion, dietary restrictions, or any specific flavor profiles you love." 
+                    <textarea id="message" name="Message" placeholder="Tell us about the occasion, dietary restrictions, etc." 
                         class="w-full p-4 rounded-lg bg-white/10 border border-secondary/30 text-white h-40 focus:outline-none focus:border-secondary focus:bg-white/20 transition-all" 
                         required maxlength="500"></textarea>
                 </div>
 
                 <div class="pt-4">
-                    <button type="submit" class="w-full py-5 bg-secondary text-primary text-xl font-bold rounded-xl hover:bg-white hover:text-primary border-2 border-secondary transition-all duration-300 shadow-lg">
+                    <button type="submit" id="submit-btn" class="w-full py-5 bg-secondary text-primary text-xl font-bold rounded-xl hover:bg-white hover:text-primary border-2 border-secondary transition-all duration-300 shadow-lg">
                         SUBMIT INQUIRY
                     </button>
-                    <p class="text-center text-xs opacity-60 mt-4 italic">Submission will open your default email client.</p>
                 </div>
             </form>
-        </div>
-
-        <div class="mt-12 text-center text-gray-500">
-            <p>We are a small team and appreciate your patience.</p>
-            <p>Typical response time is 48-72 hours.</p>
         </div>
     </div>
 </main>
